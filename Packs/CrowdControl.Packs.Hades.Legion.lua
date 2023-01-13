@@ -79,6 +79,42 @@ do
 		return pack.Actions.SpawnEnemy(enemy)
 	end
 
+	function pack.Actions.SpawnMeg()
+		local EnemyTable = {}
+		table.insert(EnemyTable,"Harpy")
+		for _,v in ipairs(EnemyTable) do
+			local enemyData = EnemyData[v]
+			local newEnemy = DeepCopyTable( enemyData )
+			newEnemy.ObjectId = SpawnUnit({ Name = enemyData.Name, Group = "Standing", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = math.random(-500,500), OffsetY = math.random(-500,500) })
+			SetupEnemyObject( newEnemy, CurrentRun, { SkipSpawnVoiceLines = true } )
+			UseableOff({ Id = newEnemy.ObjectId })
+		end
+	end
+
+	function pack.Actions.SpawnAlecto()
+		local EnemyTable = {}
+		table.insert(EnemyTable,"Harpy2")
+		for _,v in ipairs(EnemyTable) do
+			local enemyData = EnemyData[v]
+			local newEnemy = DeepCopyTable( enemyData )
+			newEnemy.ObjectId = SpawnUnit({ Name = enemyData.Name, Group = "Standing", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = math.random(-500,500), OffsetY = math.random(-500,500) })
+			SetupEnemyObject( newEnemy, CurrentRun, { SkipSpawnVoiceLines = true } )
+			UseableOff({ Id = newEnemy.ObjectId })
+		end
+	end
+
+	
+	function pack.Actions.SpawnTis()
+		local EnemyTable = {}
+		table.insert(EnemyTable,"Harpy3")
+		for _,v in ipairs(EnemyTable) do
+			local enemyData = EnemyData[v]
+			local newEnemy = DeepCopyTable( enemyData )
+			newEnemy.ObjectId = SpawnUnit({ Name = enemyData.Name, Group = "Standing", DestinationId = CurrentRun.Hero.ObjectId, OffsetX = math.random(-500,500), OffsetY = math.random(-500,500) })
+			SetupEnemyObject( newEnemy, CurrentRun, { SkipSpawnVoiceLines = true } )
+			UseableOff({ Id = newEnemy.ObjectId })
+		end
+	end
 
 
 	-- =====================================================
@@ -98,17 +134,13 @@ ModUtil.Path.Set( "Hades.Legion", ModUtil.Table.Copy( pack.Effects ), cc.Effects
 
 
 -- For testing purposes
--- ModUtil.Path.Wrap( "BeginOpeningCodex", 
--- 	function(baseFunc)		
--- 		if not CanOpenCodex() then
--- 			ModUtil.Hades.PrintStack("Testing Codex function")
--- 			if CurrentRun.CurrentRoom.Name ~= "RoomOpening" then
--- 				pack.Actions.SpawnNumbskull()
--- 			else
--- 				ModUtil.Hades.PrintStack("This is RoomOpening")
--- 			end
-			
--- 		end
--- 		baseFunc()
--- 	end
--- )
+ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	function(baseFunc)		
+		if not CanOpenCodex() then
+			pack.Actions.SpawnMeg()
+			pack.Actions.SpawnAlecto()
+			pack.Actions.SpawnTis()
+		end
+		baseFunc()
+	end
+)
