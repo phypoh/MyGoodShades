@@ -1,0 +1,41 @@
+{
+  Projectiles = [
+      "_append"
+    {
+      Name = "WaveClearSuper"
+      InheritFrom = "1_BasePlayerSmallProjectile"
+      DetonateGraphic = "ZagCastNovaHit"
+      Type = "STRAIGHT"
+      DetonateSound = "/SFX/WrathStart"
+      Fuse = 0.0
+      CanBeReflected = false
+      CanBeProjectileDefenseDestroyed = false
+      AffectsEnemies = true
+      //AffectsFriends = true
+      Range = 1.0
+      DamageRadius = 2200
+      DamageRadiusScaleY = 0.5
+      BlastSpeed = 875
+      NumPenetrations = 9999
+      AffectsSelf = false
+      CheckUnitImpact = true
+      CheckObstacleImpact = false
+      UnlimitedUnitPenetration = true
+      ResetCollisionOutsideDetonation = true
+      HollowBlastRadiusBand = 40
+      DangerDistance = 200
+      DamageLow = 1000
+      DamageHigh = 1000
+      ImpactVelocity = 0
+      CriticalFx = "CriticalHit"
+      HitVulnerabilityFx = "Backstab"
+      UseArmor = false
+      UseVulnerability = false
+      Thing = 
+      {
+        Graphic = "ZagPushRing"
+        Grip = 999999
+      }
+    }
+  ]
+}

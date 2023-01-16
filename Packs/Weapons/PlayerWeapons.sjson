@@ -1,0 +1,17 @@
+{
+  Weapons = [
+    "_append"  
+    {
+      Name = "WaveClearSuper"
+      InheritFrom = "1_BaseMagicWeapon"
+      Type = "GUN"
+      Projectile = "WaveClearSuper"
+      FullyAutomatic = true
+      AutoLock = true
+      FireFx = "null"
+      IgnoreOwnerAttackDisabled = true
+      NumProjectiles = 1
+      ProjectileInterval = 0.5
+    }
+  ]
+}

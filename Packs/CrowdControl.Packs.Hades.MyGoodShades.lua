@@ -4,6 +4,13 @@ local pack = ModUtil.Mod.Register( "MyGoodShades", packs.Hades, false )
 pack.Effects = { }; pack.Actions = { }; pack.Triggers = { }
 pack.Parametric = { Actions = { }, Triggers = { } }
 
+ModUtil.Path.Wrap( "SetupMap", function(baseFunc)
+	local package = "MyGoodShades"
+	DebugPrint({Text = "Trying to load package "..package..".pkg"})
+	LoadPackages({Name = package})
+	return baseFunc()
+end)
+
 do
 	-- =====================================================
 	-- Triggers
@@ -52,9 +59,16 @@ do
 				RequiredFalseFlags = { "InFlashback" },
 				PreLineWait = 1.0,
 				BreakIfPlayed = true,
+				RandomRemaining = true,
 
 				-- Hope you enjoyed the show, my good Shade!
 				{ Cue = "/VO/ZagreusField_3345"},
+
+				-- Someone's going to enjoy this.
+				{ Cue = "/VO/ZagreusField_1036"},
+
+				-- Someone'll like this
+				{ Cue = "/VO/ZagreusField_1037"},
 			},
 		}
 	
@@ -132,12 +146,17 @@ do
 		return true
 	end
 
+	function WaveClearShout()
+		FireWeaponFromUnit({ Weapon = "WaveClearSuper", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
+			AutoEquip = true, ClearAllFireRequests = true })
+	end
+
 	-- =====================================================
 	-- Effects
 	-- =====================================================
 	pack.Effects.HelloWorld = pack.Actions.SayHello
 	pack.Effects.KillHero = cc.BindEffect( packs.Hades.Base.Triggers.IfCanMove, pack.Actions.KillHero )
-	pack.Effects.BuildSuperMeter = cc.RigidEffect( cc.BindEffect( pack.Triggers.IfRunActive, pack.Actions.BuildSuperMeter ) )
+	pack.Effects.BuildSuperMeter = cc.RigidEffect( cc.BindEffect( pack.Triggers.IfInCombat, pack.Actions.BuildSuperMeter ) )
 	pack.Effects.DDAdd = cc.RigidEffect( cc.BindEffect( pack.Triggers.IfRunActive, pack.Actions.DDAdd))
 	pack.Effects.DDRemove = cc.RigidEffect( cc.BindEffect( pack.Triggers.CheckLastStand, pack.Actions.DDRemove))
 	pack.Effects.Flashbang = cc.BindEffect( pack.Triggers.IfInCombat, pack.Actions.Flashbang)
@@ -148,11 +167,12 @@ end
 ModUtil.Path.Set( "Hades.MyGoodShades", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
 -- For testing purposes
--- ModUtil.Path.Wrap( "BeginOpeningCodex", 
--- 	function(baseFunc)		
--- 		if not CanOpenCodex() then
--- 			ModUtil.Hades.PrintStack("Hello World!") 
--- 		end
--- 		baseFunc()
--- 	end
--- )
+ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	function(baseFunc)		
+		if not CanOpenCodex() then
+			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
+			WaveClearShout()
+		end
+		baseFunc()
+	end
+)

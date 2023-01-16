@@ -30,7 +30,6 @@ namespace CrowdControl.Games.Packs
             new Effect("Remove Death Defiance", "Hades.MyGoodShades.DDRemove"),
             new Effect("Flashbang", "Hades.MyGoodShades.Flashbang"),
            
-
             // Assist pack
             new Effect("Dusa Assist", "Hades.Assists.DusaAssist"),
             new Effect("Skelly Assist", "Hades.Assists.SkellyAssist"),
@@ -57,6 +56,7 @@ namespace CrowdControl.Games.Packs
             new Effect("Tisiphone", "Hades.Legion.SpawnTis" ),
             new Effect("Theseus", "Hades.Legion.SpawnTheseus" ),
             new Effect("Asterius", "Hades.Legion.SpawnAsterius" ),
+
         };
     }
 }

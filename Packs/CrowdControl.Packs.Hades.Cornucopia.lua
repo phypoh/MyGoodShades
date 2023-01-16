@@ -97,10 +97,8 @@ do
 		BlockEffect({ Id = CurrentRun.Hero.ObjectId, Name = "StyxPoison", Duration = 0.75 })
 		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CuredText", Duration = 0.75 })
 		thread( PlayVoiceLines, CuredVoiceLines, false )
-
 		return true
 	end 
-
 
 	-- =====================================================
 	-- Effects

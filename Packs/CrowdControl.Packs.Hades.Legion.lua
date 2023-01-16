@@ -16,24 +16,38 @@ do
 		return false
 	end
 
-	function pack.Parametric.Triggers.EnemyOnField( bossName )
-		return function( ... )
+	function pack.Parametric.Triggers.DuplicateCheck( enemyName )
+		return function(...)
 			if CurrentRun.CurrentRoom.Name == "RoomOpening" then
 				return false
 			end
-	
+
 			for enemyid, enemy in pairs( ActiveEnemies ) do
 				-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
-				if bossName == enemy.Name then
+				if enemy.Name == enemyName then
 					return false
 				end
 			end
-			
 			cc.InvokeEffect(...)
 			return true
 		end
 	end
 
+
+	function pack.Triggers.BossCheck(id, action, ... )
+		if CurrentRun.CurrentRoom.Name == "RoomOpening" then
+			return false
+		end
+
+		for enemyid, enemy in pairs( ActiveEnemies ) do
+			-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
+			if enemy.IsBoss then
+				return false
+			end
+		end
+		cc.InvokeEffect(id, action, ...)
+		return true
+	end
 	-- =========================================
 	-- Actions
 	-- =====================================================
@@ -104,13 +118,12 @@ do
 	pack.Effects.SpawnPest = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Actions.SpawnEnemies("ThiefMineLayer", 5))
 	pack.Effects.SpawnSnakestone = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Actions.SpawnEnemy("HeavyRangedForked"))
 	pack.Effects.SpawnSatyr = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Actions.SpawnEnemy("SatyrRanged"))
-	pack.Effects.SpawnMeg = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.EnemyOnField( "Harpy" ), pack.Actions.SpawnBoss( "Harpy" )))
-	pack.Effects.SpawnAlecto = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.EnemyOnField( "Harpy2" ), pack.Actions.SpawnBoss( "Harpy2" )))
-	pack.Effects.SpawnTis = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.EnemyOnField( "Harpy3" ), pack.Actions.SpawnBoss( "Harpy3" )))
-	pack.Effects.SpawnTheseus = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.EnemyOnField( "Theseus" ), pack.Actions.SpawnBoss( "Theseus" )))
-	pack.Effects.SpawnAsterius = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.EnemyOnField( "Minotaur" ), pack.Actions.SpawnBoss( "Minotaur" )))
+	pack.Effects.SpawnMeg = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Actions.SpawnBoss( "Harpy" )))
+	pack.Effects.SpawnAlecto = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Actions.SpawnBoss( "Harpy2" )))
+	pack.Effects.SpawnTis = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Actions.SpawnBoss( "Harpy3" )))
+	pack.Effects.SpawnTheseus = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Actions.SpawnBoss( "Theseus" )))
+	pack.Effects.SpawnAsterius = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Actions.SpawnBoss( "Minotaur" )))
 
-	
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path

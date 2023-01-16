@@ -1,0 +1,154 @@
+{
+  Animations = [
+    "_append"
+        /* Zag - Shout - Hellring */
+        {
+            Name = "ZagPushRing"
+            FilePath = "Dev\blank_invisible"
+            GroupName = "FX_Terrain"
+            Type = "Constant"
+            AddColor = true
+            EndFrame = 1
+            NumFrames = 1
+            StartFrame = 1
+            DieWithOwner = true
+            RandomRotation = false
+            ScaleFromOwner = "Ignore"
+            ScaleRadius = 960.0
+            Ambient = 0.0
+            AngleFromOwner = "Ignore"
+            UseOwnAngle = false
+            VisualFx = "ZagAmmoPushRingCirclesBright"
+            VisualFxIntervalMin = 0.15
+            VisualFxIntervalMax = 0.2
+            IgnoreFrameCap = true
+            CreateAnimation = "ZagAmmoPushRingDisplacement"
+            Color = 
+                {
+                    Red = 1.0
+                    Green = 0.0
+                    Blue = 0.0
+                }
+            Sound = "/Leftovers/Menu Sounds/TextReveal2"
+        }
+
+        {
+            Name = "ZagAmmoPushRingDisplacement"
+            Type = "Constant"
+            FilePath = "Fx\HadesAmmoWeapon\HadesAmmoWeaponDisplacement"
+            Material = "Unlit"
+            ScaleRadius = 400
+            GroupName = "FX_Displacement"
+            DieWithOwner = true
+            AngleFromOwner = "Ignore"
+            ColorFromOwner = "Ignore"
+            UseAttachedFlasher = false
+            UseAttachedAddColor = false
+            StartAlpha = 1
+            EndAlpha = 0
+            Duration = 2
+            SortMode = "FromParent"
+            VisualFx = "ZagAmmoPushRingEdgeFx"
+            VisualFxIntervalMin = 0.01
+            VisualFxIntervalMax = 0.011
+            IgnoreFrameCap = true
+        }
+
+        {
+            Name = "ZagAmmoPushRingCirclesBright"
+            Type = "Book"
+            FilePath = "MyGoodShades\Fx\ZagAmmoWeaponCirclesBright\ZagAmmoWeaponCirclesBright"
+            NumFrames = 6
+            Material = "Unlit"
+            ScaleRadius = 920
+            ScaleMin = 0.98
+            ScaleMax = 1.03
+            StartScale = 0.95
+            EndScale = 1.05
+            EaseIn = 0.5
+            EaseOut = 1
+            RandomFlipHorizontal = true
+            RandomFlipVertical = true
+            RandomDurationMin = 0.45
+            RandomDurationMax = 0.7
+            GroupName = "FX_Terrain_Add"
+            StartAlpha = 0
+            EndAlpha = 1
+            PingPongColor = true
+            Loop = false
+            DieWithOwner = false
+            AngleFromOwner = "Ignore"
+            PlaySpeed = 1e-13
+            RandomStartFrame = true
+            CreateAnimation = "ZagAmmoPushRingCirclesDark"
+            IgnoreFrameCap = true
+            Scale = 1
+            ScaleFromOwner = "Ignore"
+            ColorFromOwner = "Ignore"
+            UseAttachedFlasher = false
+            UseAttachedAddColor = false
+            //Color
+        }
+        {
+            Name = "ZagAmmoPushRingCirclesDark"
+            InheritFrom = "ZagAmmoPushRingCirclesBright"
+            FilePath = "Fx\HadesAmmoWeaponCirclesDark\HadesAmmoWeaponCirclesDark"
+            NumFrames = 3
+            GroupName = "FX_Terrain"
+            CreateAnimation = null
+        }
+        {
+            Name = "ZagAmmoPushRingEdgeFx"
+            Type = "Constant"
+            FilePath = "Particles\particle_snowDust_01"
+            NumFrames = 1
+            Material = "Unlit"
+            AngleMin = 0
+            AngleMax = 360
+            UseOwnAngle = false
+            RadialOffsetMin = 100
+            RadialOffsetMax = 101
+            RadialOffsetScaleRadius = 100
+            RadialOffsetScaleY = 0.5
+            VelocityMin = 100
+            VelocityMax = 200
+            UpwardVelocityMin = 100
+            UpwardVelocityMax = 200
+            StartScale = 0.4
+            EndScale = 0.75
+            Scale = 1.9
+            ScaleMin = 0.8
+            ScaleMax = 1.0
+            StartAlpha = 1
+            EndAlpha = 0
+            Gravity = 120
+            RandomDurationMin = 0.45
+            RandomDurationMax = 0.5
+            Acceleration = -900
+            LocationFromOwner = "Ignore"
+            ScaleFromOwner = "Ignore"
+            GroupName = "Standing"
+            SortMode = "FromParent"
+        }
+        {
+            Name = "ZagCastNovaHit"
+            FilePath = "Fx\ShadeNova\ShadeNova"
+            Type = "Book"
+            AngleFromOwner = "Ignore"
+            EndFrame = 28
+            NumFrames = 28
+            StartFrame = 1
+            RandomFlipHorizontal = true
+            RandomFlipVertical = true
+            Ambient = 0.0
+            Hue = 0.3
+            Scale = 1
+            ScaleY = 1.0
+            PlaySpeed = 120
+            OffsetZ = 30
+            Red = 1
+            Blue = 0
+            Green = 0
+        }
+    ]
+}
