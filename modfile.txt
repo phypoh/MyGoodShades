@@ -1,13 +1,13 @@
 Load Priority 100
-Import "CrowdControl.Packs.Hades.MyGoodShades.lua"
-Import "CrowdControl.Packs.Hades.Assists.lua"
-Import "CrowdControl.Packs.Hades.Cornucopia.lua"
-Import "CrowdControl.Packs.Hades.Legion.lua"
+Import "MyGoodShades.lua"
+Import "Assists.lua"
+Import "Cornucopia.lua"
+Import "Legion.lua"
 
 
 Load Priority 100
-To "CrowdControlContent/CrowdControl.Packs.Hades.MyGoodShades.cs"
-Replace "CrowdControl.Packs.Hades.MyGoodShades.cs"
+To "CrowdControlContent/MyGoodShades.cs"
+Replace "MyGoodShades.cs"
 
 :: Language Text
 To "Game/Text/en/HelpText.en.sjson"

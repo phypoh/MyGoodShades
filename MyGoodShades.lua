@@ -160,19 +160,20 @@ do
 	pack.Effects.DDAdd = cc.RigidEffect( cc.BindEffect( pack.Triggers.IfRunActive, pack.Actions.DDAdd))
 	pack.Effects.DDRemove = cc.RigidEffect( cc.BindEffect( pack.Triggers.CheckLastStand, pack.Actions.DDRemove))
 	pack.Effects.Flashbang = cc.BindEffect( pack.Triggers.IfInCombat, pack.Actions.Flashbang)
+	pack.Effects.ScreenNuke = cc.RigidEffect( cc.BindEffect( pack.Triggers.WaveClearShout, pack.Actions.Flashbang))
 end
 
 
 -- put our effects into the centralised Effects table, under the "Hades.MyGoodShades" path
-ModUtil.Path.Set( "Hades.MyGoodShades", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
+ModUtil.Path.Set( "MyGoodShades", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
 -- For testing purposes
-ModUtil.Path.Wrap( "BeginOpeningCodex", 
-	function(baseFunc)		
-		if not CanOpenCodex() then
-			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
-			WaveClearShout()
-		end
-		baseFunc()
-	end
-)
+-- ModUtil.Path.Wrap( "BeginOpeningCodex", 
+-- 	function(baseFunc)		
+-- 		if not CanOpenCodex() then
+-- 			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
+-- 			WaveClearShout()
+-- 		end
+-- 		baseFunc()
+-- 	end
+-- )

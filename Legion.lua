@@ -127,7 +127,7 @@ do
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
-ModUtil.Path.Set( "Hades.Legion", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
+ModUtil.Path.Set( "Legion", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
 
 -- For testing purposes

@@ -43,7 +43,7 @@ do
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
-ModUtil.Path.Set( "Hades.Assists", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
+ModUtil.Path.Set( "Assists", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
 -- For testing purposes
 -- ModUtil.Path.Wrap( "BeginOpeningCodex", 
