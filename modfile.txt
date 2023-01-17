@@ -1,7 +1,41 @@
-Load Priority 10
-Import "CrowdControl.lua"
-Include "Packs/modfile.txt"
+Load Priority 100
+Import "CrowdControl.Packs.Hades.MyGoodShades.lua"
+Import "CrowdControl.Packs.Hades.Assists.lua"
+Import "CrowdControl.Packs.Hades.Cornucopia.lua"
+Import "CrowdControl.Packs.Hades.Legion.lua"
 
-Load Priority 10
-To "StyxScribeScripts/CrowdControl.py"
-Replace "CrowdControl.py"
+
+Load Priority 100
+To "CrowdControlContent/CrowdControl.Packs.Hades.MyGoodShades.cs"
+Replace "CrowdControl.Packs.Hades.MyGoodShades.cs"
+
+:: Language Text
+To "Game/Text/en/HelpText.en.sjson"
+SJSON "Text/en/HelpText.en.sjson"
+
+:: Animations
+To "Game/Animations/Fx.sjson" 
+SJSON "Animations/Fx.sjson"
+
+:: Assets
+To "Win/Packages/MyGoodShades.pkg"
+Replace "Packages/MyGoodShades.pkg"
+To "Win/Packages/720p/MyGoodShades.pkg"
+Replace "Packages/MyGoodShades.pkg"
+
+To "Win/Packages/MyGoodShades.pkg_manifest"
+Replace "Packages/MyGoodShades.pkg_manifest"
+To "Win/Packages/720p/MyGoodShades.pkg_manifest"
+Replace "Packages/MyGoodShades.pkg_manifest"
+
+:: Projectiles
+To "Game/Projectiles/PlayerProjectiles.sjson"
+SJSON "Projectiles/PlayerProjectiles.sjson"
+
+:: Weapons
+To "Game/Weapons/PlayerWeapons.sjson"
+SJSON "Weapons/PlayerWeapons.sjson"
+
+
+
+

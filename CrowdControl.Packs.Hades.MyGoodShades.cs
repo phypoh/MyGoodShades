@@ -25,7 +25,6 @@ namespace CrowdControl.Games.Packs
                 Description = "Don't be rude, Zagreus. Say hello!"},
             new Effect("No Escape", "Hades.MyGoodShades.KillHero"){ Duration = 5, Price = 500, 
                 Description = "Send Zag back to the house of Hades, forcing him to start the run over."},
-			// new Effect("300 Temporary Money", "Hades.Examples.TempMoney"){ Duration = 10 },
             new Effect("Add Death Defiance", "Hades.MyGoodShades.DDAdd"),
             new Effect("Remove Death Defiance", "Hades.MyGoodShades.DDRemove"),
             new Effect("Flashbang", "Hades.MyGoodShades.Flashbang"),
