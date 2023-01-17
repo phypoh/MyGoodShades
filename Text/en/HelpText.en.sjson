@@ -5,5 +5,9 @@
 			Id = "CuredText",
 			DisplayName = "{#CombatTextHighlightFormat}Cured!{#PreviousFormat}"
     	}
+		{
+			Id = "PomShardUseText"
+			DisplayName = "{I} Use {!Icons.RandomPomSmall} Power-Up"
+		}
     ]
 }

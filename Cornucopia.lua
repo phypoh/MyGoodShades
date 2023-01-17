@@ -5,6 +5,8 @@ pack.Effects = { }; pack.Actions = { }; pack.Triggers = { }
 pack.Parametric = { Actions = { }, Triggers = { } }
 
 do
+	local MGSConsumableData = ModUtil.Entangled.ModData(ConsumableData)
+	MGSConsumableData.StoreRewardRandomStack.UseText = "PomShardUseText"
 	-- =====================================================
 	-- Triggers
 	-- =====================================================
@@ -39,6 +41,22 @@ do
 	-- Gift some nectar
 	function pack.Actions.SpawnNectar()
 		local dropItemName = "GiftDrop"
+		GiveRandomConsumables({
+			Delay = 0.5,
+			NotRequiredPickup = true,
+			LootOptions =
+			{
+				{
+					Name = dropItemName,
+					Chance = 1,
+				}
+			}
+		})
+		return true
+	end
+
+	function pack.Actions.SpawnPomShard()
+		local dropItemName = "StoreRewardRandomStack"
 		GiveRandomConsumables({
 			Delay = 0.5,
 			NotRequiredPickup = true,
@@ -104,9 +122,11 @@ do
 	-- Effects
 	-- =====================================================
 	pack.Effects.DropHeal = pack.Actions.SpawnHealDrop
-	pack.Effects.DropMoney = cc.RigidEffect( cc.BindEffect( packs.Hades.MyGoodShades.Triggers.IfRunActive, pack.Actions.SpawnMoney ) )
+	pack.Effects.DropMoney = cc.RigidEffect( cc.BindEffect( MyGoodShades.Triggers.IfRunActive, pack.Actions.SpawnMoney ) )
 	pack.Effects.DropNectar = pack.Actions.SpawnNectar
+	pack.Effects.DropPomShard = cc.RigidEffect( cc.BindEffect( MyGoodShades.Triggers.IfRunActive, pack.Actions.SpawnPomShard ) )
 	pack.Effects.PoisonCure = cc.RigidEffect( pack.Actions.PoisonCure )
+
 
 end
 
@@ -117,7 +137,7 @@ ModUtil.Path.Set( "Cornucopia", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 -- ModUtil.Path.Wrap( "BeginOpeningCodex", 
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
-
+-- 			pack.Actions.SpawnPomShard()
 -- 		end
 -- 		baseFunc()
 -- 	end

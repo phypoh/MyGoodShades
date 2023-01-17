@@ -40,6 +40,7 @@ namespace CrowdControl.Games.Packs
             new Effect("Healing Aid", "Cornucopia.DropHeal"),
             new Effect("Money Aid", "Cornucopia.DropMoney"),
             new Effect("Nectar Aid", "Cornucopia.DropNectar"),
+            new Effect("Pom Shard", "Cornucopia.DropPomShard"),
             new Effect("Poison Cure", "Cornucopia.PoisonCure"),
 
             // Legion pack
