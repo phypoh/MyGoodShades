@@ -18,6 +18,7 @@ do
 	function pack.Triggers.IfRunActive( id, action, ... )
 		if not CurrentRun.Hero.IsDead then
 			cc.InvokeEffect( id, action, ... )
+			return true
 		end
 		return false
 	end
@@ -25,8 +26,11 @@ do
 	function pack.Triggers.IfInCombat( id, action, ... )
 		if not CurrentRun.Hero.IsDead then
 			local currentEncounter = CurrentRun.CurrentRoom.Encounter
+			-- ModUtil.Hades.PrintStack(currentEncounter.InProgress) 
+			-- ModUtil.Hades.PrintStack(currentEncounter.InProgress and currentEncounter.EncounterType ~= "NonCombat") 
 			if currentEncounter.InProgress and currentEncounter.EncounterType ~= "NonCombat" then
 				cc.InvokeEffect( id, action, ... )
+				return true
 			end
 		end
 		return false
@@ -35,6 +39,7 @@ do
 	function pack.Triggers.CheckLastStand( id, action, ... )
 		if not CurrentRun.Hero.IsDead and TableLength(CurrentRun.Hero.LastStands) > 0 then
 			cc.InvokeEffect( id, action, ... )
+			return true
 		end
 		return false
 	end
@@ -146,7 +151,7 @@ do
 		return true
 	end
 
-	function WaveClearShout()
+	function pack.Actions.WaveClearShout()
 		FireWeaponFromUnit({ Weapon = "WaveClearSuper", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
 			AutoEquip = true, ClearAllFireRequests = true })
 		return true

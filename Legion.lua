@@ -12,6 +12,7 @@ do
 	function pack.Triggers.IfNotFirstRoom(id, action, ...)
 		if CurrentRun.CurrentRoom.Name ~= "RoomOpening" then
 				cc.InvokeEffect( id, action, ... )	
+				return true
 		end
 		return false
 	end
