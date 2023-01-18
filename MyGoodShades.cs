@@ -23,7 +23,7 @@ namespace CrowdControl.Games.Packs
         {
             new Effect("Hello World", "MyGoodShades.HelloWorld")
                 { Price = 1, Description = "Don't be rude, Zagreus. Say hello!"},
-            new Effect("No Escape", "MyGoodShades.KillHero"){ Duration = 5, Price = 500, 
+            new Effect("No Escape", "MyGoodShades.KillHero"){ Duration = 5, Price = 1000, 
                 Description = "Send Zag back to the house of Hades, forcing him to start the run over."},
             new Effect("Boost God Gauge", "MyGoodShades.BuildSuperMeter")
                 {Price = 3, Description = "Fill the God Gague by a little over a bar, only if Zagreus has a call."},
@@ -58,7 +58,7 @@ namespace CrowdControl.Games.Packs
             new Effect("Spawn Numbskulls", "Legion.SpawnNumbskull")
                 {Price = 20, Description = "Summon some armoured numbskulls for Zag to butt heads with."},
             new Effect("Spawn Flamewheels", "Legion.SpawnFlameWheel")
-                {Price = 30, Description = "Spawn some mini chariots that explode when they touch Zag!"},
+                {Price = 30, Description = "Spawn some mini chariots that explode when they touch Zag! (Same tho)"},
             new Effect("Spawn Pests", "Legion.SpawnPest" )
                 {Price = 20, Description = "Spawn some mine laying pests!"},
             new Effect("Spawn a Voidstone", "Legion.SpawnVoidstone" )
@@ -85,3 +85,4 @@ namespace CrowdControl.Games.Packs
         };
     }
 }
+
