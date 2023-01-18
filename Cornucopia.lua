@@ -122,9 +122,9 @@ do
 	-- Effects
 	-- =====================================================
 	pack.Effects.DropHeal = pack.Actions.SpawnHealDrop
-	pack.Effects.DropMoney = cc.RigidEffect( cc.BindEffect( MyGoodShades.Triggers.IfRunActive, pack.Actions.SpawnMoney ) )
+	pack.Effects.DropMoney = cc.RigidEffect( cc.BindEffect( packs.Hades.MyGoodShades.Triggers.IfRunActive, pack.Actions.SpawnMoney ))
 	pack.Effects.DropNectar = pack.Actions.SpawnNectar
-	pack.Effects.DropPomShard = cc.RigidEffect( cc.BindEffect( MyGoodShades.Triggers.IfRunActive, pack.Actions.SpawnPomShard ) )
+	pack.Effects.DropPomsShard = cc.RigidEffect( cc.BindEffect( packs.Hades.MyGoodShades.Triggers.IfRunActive, pack.Actions.SpawnPomShard ))
 	pack.Effects.PoisonCure = cc.RigidEffect( pack.Actions.PoisonCure )
 
 
