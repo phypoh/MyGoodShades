@@ -33,13 +33,46 @@ do
 		return true
 	end
 
+	function pack.Actions.SisyphusAssist()
+		SisyphusLootSprinkle( {
+			FunctionName = "SisyphusLootSprinkle",
+			SisyphusWeapon = "NPC_Sisyphus_01_Assist",
+			LootOptions =
+			{
+				{
+					Name = "MinorMoneyDrop",
+					MinAmount = 1,
+					MaxAmount = 1,
+				},
+				{
+					Name = "HealDropMinor",
+					MinAmount = 4,
+					MaxAmount = 4,
+				},
+				{
+					Name = "RoomRewardMetaPointDrop",
+					MinAmount = 1,
+					MaxAmount = 1,
+				},
+			},
+			Range = 80,
+			MinForce = 200,
+			MaxForce = 350,
+			GameStateRequirements = {},
+			AssistPresentationPortrait = "Portrait_Sisyphus_Default_01",
+			AssistPresentationColor = { 110, 255, 0, 255 },
+			AssistPresentationPortraitOffsetY = 35,
+		} )
+		return true
+	end
+
 
 	-- =====================================================
 	-- Effects
 	-- =====================================================
 	pack.Effects.DusaAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.DusaAssist))
 	pack.Effects.SkellyAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.SkellyAssist))
-
+	pack.Effects.SisyphusAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.SisyphusAssist))
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
@@ -50,7 +83,7 @@ ModUtil.Path.Set( "Assists", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
 -- 			ModUtil.Hades.PrintStack("Testing Codex function")
--- 			pack.Actions.DusaAssist()
+-- 			pack.Actions.SisyphusAssist()
 -- 		end
 -- 		baseFunc()
 -- 	end

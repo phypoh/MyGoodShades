@@ -104,6 +104,18 @@ do
 
 				-- That was for you, good Shade!
 				{ Cue = "/VO/ZagreusField_3344"},
+
+				-- Just me, pretend I'm not even here.
+				{ Cue = "/VO/ZagreusHome_2083"},
+
+				-- You shades hang in there
+				{ Cue = "/VO/ZagreusHome_2888"}, 
+
+				-- You shades doing alright? 
+				{ Cue = "/VO/ZagreusHome_3076"}, 
+
+				-- Seriously, you shades keep it up
+				{ Cue = "/VO/ZagreusHome_3098"}
 							
 			},
 		}
