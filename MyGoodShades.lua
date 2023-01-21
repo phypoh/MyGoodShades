@@ -145,14 +145,44 @@ do
 			HealFraction = 0.5
 		})
 		UpdateLifePips()
+		PlaySound({ Name = "/Leftovers/SFX/StaminaRefilled", Id = CurrentRun.Hero.ObjectId })
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "DDGainedText", Duration = 1 })
 		return true
 	end
 
 	-- Removes a Death Defiance (if any) 
 	function pack.Actions.DDRemove()
+
+		local secondChanceFxInTime = 0.08
+
+		-- put up screen vfx
+		ScreenAnchors.LastStandVignette = SpawnObstacle({ Name = "BlankObstacle", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
+		CreateAnimation({ Name = "LastStandVignette", DestinationId = ScreenAnchors.LastStandVignette })
+		AdjustColorGrading({ Name = "DeathDefianceSubtle", Duration = secondChanceFxInTime, Delay = 0.0, })
+
+		RemoveFromGroup({ Id = CurrentRun.Hero.ObjectId, Names = { "Standing" } })
+		AddToGroup({ Id = CurrentRun.Hero.ObjectId, Name = "Combat_Menu", DrawGroup = true })
+
+		-- camera
+		PanCamera({ Id = CurrentRun.Hero.ObjectId, Duration = 0.01 })
+		FocusCamera({ Fraction = 1.03, Duration = 0.045, ZoomType = "Ease" })
+
+		-- pause the game
+		AddSimSpeedChange( "LastStand", { Fraction = 0.005, LerpTime = 0.0001, Priority = true } )
+
+		-- play voiceover
+		thread( PlayerLastStandSFX )
+		waitScreenTime( 0.3, RoomThreadName )
+
+		thread( CrowdReactionPresentation, { AnimationNames = { "StatusIconGrief", "StatusIconOhBoy", "StatusIconEmbarrassed" }, Sound = "/SFX/TheseusCrowdBoo", ReactionChance = 0.05, Requirements = { RequiredRoom = "C_Boss01" }, Delay = 1, Shake = true, RadialBlur = true } )
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "DDLostText", Duration = 1 })
+
 		LostLastStandPresentation()
 		RemoveLastStand()
 		UpdateLifePips()
+
+		PlayerLastStandPresentationEnd()
+
 		return true
 	end
 
@@ -193,12 +223,12 @@ end
 ModUtil.Path.Set( "MyGoodShades", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
 -- For testing purposes
--- ModUtil.Path.Wrap( "BeginOpeningCodex", 
--- 	function(baseFunc)		
--- 		if not CanOpenCodex() then
--- 			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
--- 			pack.Actions.Flashbang()
--- 		end
--- 		baseFunc()
--- 	end
--- )
+ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	function(baseFunc)		
+		if not CanOpenCodex() then
+			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
+			pack.Actions.DDAdd()
+		end
+		baseFunc()
+	end
+)

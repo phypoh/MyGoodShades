@@ -9,5 +9,13 @@
 			Id = "PomShardUseText"
 			DisplayName = "{I} Use {!Icons.RandomPomSmall} Power-Up"
 		}
+		{
+			Id = "DDGainedText"
+			DisplayName = "{#CombatTextHighlightFormat}Shade gifted a life!{#PreviousFormat}"
+		}
+		{
+			Id = "DDLostText"
+			DisplayName = "{#CombatTextHighlightFormat}Haunted by a Shade!{#PreviousFormat}"
+		}
     ]
 }
