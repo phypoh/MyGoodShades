@@ -103,17 +103,19 @@ do
 		-- 	Tartarus -> 1 
 		-- 	Asphodel -> 1.5
 		-- 	Elysium -> 2
-		-- 	Styx/Surface -> 4
+		-- 	Styx/Surface -> 2.5
 
-		return 1 + 0.5 * (biomeNumber - 1)
+		return 0.5 * (biomeNumber + 1)
 	end
 
 	function pack.Parametric.Actions.SpawnBoss(bossName, scaledHealth)
 		return function (...)
 			local enemyData = EnemyData[bossName]
 			local newEnemy = DeepCopyTable( enemyData )
-			local newHealth = scaledHealth * getBossHealthScalingForBiome()
-			newEnemy.MaxHealth = newHealth
+			if scaledHealth then
+				local newHealth = scaledHealth * getBossHealthScalingForBiome() 
+				newEnemy.MaxHealth = newHealth
+			end
 			newEnemy.AIOptions = enemyData.AIOptions
 			newEnemy.BlocksLootInteraction = false
 			local invaderSpawnPoint = 40000
