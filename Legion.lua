@@ -53,7 +53,7 @@ do
 	-- Actions
 	-- =====================================================
 
-	function pack.Actions.SpawnEnemy(selection)
+	function pack.Parametric.Actions.SpawnEnemy(selection)
 		return function (...)
 			local enemyData = EnemyData[selection]
 			local newEnemy = DeepCopyTable( enemyData )
@@ -71,7 +71,7 @@ do
 		end
 	end
 
-	function pack.Actions.SpawnEnemies(selection, count)
+	function pack.Parametric.Actions.SpawnEnemies(selection, count)
 		return function (...)
 			local enemyData = EnemyData[selection]
 			for i=1, count do
@@ -91,11 +91,29 @@ do
 		end
 	end
 
+	local function getBossHealthScalingForBiome()
+		local biomeNumber = GetBiomeDepth(CurrentRun)
+		-- biomeNumber ==
+		--   Tartarus -> 1 
+		--   Asphodel -> 2
+		--   Elysium -> 3
+		--   Styx/Surface -> 4
+		
+		-- scaledHealthMultiplier == 
+		-- 	Tartarus -> 1 
+		-- 	Asphodel -> 1.5
+		-- 	Elysium -> 2
+		-- 	Styx/Surface -> 4
 
-	function pack.Actions.SpawnBoss(bossName)
+		return 1 + 0.5 * (biomeNumber - 1)
+	end
+
+	function pack.Parametric.Actions.SpawnBoss(bossName, scaledHealth)
 		return function (...)
 			local enemyData = EnemyData[bossName]
 			local newEnemy = DeepCopyTable( enemyData )
+			local newHealth = scaledHealth * getBossHealthScalingForBiome()
+			newEnemy.MaxHealth = newHealth
 			newEnemy.AIOptions = enemyData.AIOptions
 			newEnemy.BlocksLootInteraction = false
 			local invaderSpawnPoint = 40000
@@ -112,18 +130,19 @@ do
 	-- =====================================================
 	-- Effects
 	-- =====================================================
-	pack.Effects.SpawnButterflyBall = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Actions.SpawnEnemy("FlurrySpawner"))
-	pack.Effects.SpawnFlameWheel = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Actions.SpawnEnemies("ChariotSuicide", 5))
-	pack.Effects.SpawnNumbskull = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Actions.SpawnEnemies("SwarmerHelmeted", 5))
-	pack.Effects.SpawnVoidstone = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Actions.SpawnEnemy("ShieldRanged"))
-	pack.Effects.SpawnPest = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Actions.SpawnEnemies("ThiefMineLayer", 5))
-	pack.Effects.SpawnSnakestone = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Actions.SpawnEnemy("HeavyRangedForked"))
-	pack.Effects.SpawnSatyr = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Actions.SpawnEnemy("SatyrRanged"))
-	pack.Effects.SpawnMeg = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Actions.SpawnBoss( "Harpy" )))
-	pack.Effects.SpawnAlecto = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Actions.SpawnBoss( "Harpy2" )))
-	pack.Effects.SpawnTis = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Actions.SpawnBoss( "Harpy3" )))
-	pack.Effects.SpawnTheseus = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Actions.SpawnBoss( "Theseus" )))
-	pack.Effects.SpawnAsterius = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Actions.SpawnBoss( "Minotaur" )))
+	pack.Effects.SpawnButterflyBall = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Parametric.Actions.SpawnEnemy("FlurrySpawner"))
+	pack.Effects.SpawnFlameWheel = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Parametric.Actions.SpawnEnemies("ChariotSuicide", 5))
+	pack.Effects.SpawnNumbskull = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Parametric.Actions.SpawnEnemies("SwarmerHelmeted", 5))
+	pack.Effects.SpawnVoidstone = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Parametric.Actions.SpawnEnemy("ShieldRanged"))
+	pack.Effects.SpawnPest = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Parametric.Actions.SpawnEnemies("ThiefMineLayer", 5))
+	pack.Effects.SpawnSnakestone = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Parametric.Actions.SpawnEnemy("HeavyRangedForked"))
+	pack.Effects.SpawnSatyr = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Parametric.Actions.SpawnEnemy("SatyrRanged"))
+
+	pack.Effects.SpawnMeg = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Harpy", 4400 )))
+	pack.Effects.SpawnAlecto = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Harpy2", 4600 )))
+	pack.Effects.SpawnTis = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Harpy3", 5200 )))
+	pack.Effects.SpawnTheseus = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Theseus", 4500 )))
+	pack.Effects.SpawnAsterius = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Minotaur", 7000 )))
 
 end
 
