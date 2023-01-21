@@ -66,6 +66,16 @@ do
 		return true
 	end
 
+	function pack.Actions.StartAthenaShout()
+		AthenaShout()
+		return true
+	end
+
+	function pack.Actions.FinishAthenaShout()
+		EndAthenaShout()
+		return true
+	end
+
 
 	-- =====================================================
 	-- Effects
@@ -73,6 +83,9 @@ do
 	pack.Effects.DusaAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.DusaAssist))
 	pack.Effects.SkellyAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.SkellyAssist))
 	pack.Effects.SisyphusAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.SisyphusAssist))
+	-- pack.Effects.AthenaAssist = cc.RigidEffect( cc.BindEffect( pack.Triggers.IfInCombat,
+	-- 	 cc.TimedEffect( pack.Actions.StartAthenaShout, pack.Actions.FinishAthenaShout ) ) )
+	pack.Effects.AthenaAssist = cc.TimedEffect( pack.Actions.StartAthenaShout, pack.Actions.FinishAthenaShout )
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
@@ -83,7 +96,7 @@ ModUtil.Path.Set( "Assists", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
 -- 			ModUtil.Hades.PrintStack("Testing Codex function")
--- 			pack.Actions.SisyphusAssist()
+-- 			pack.Effects.AthenaAssist()
 -- 		end
 -- 		baseFunc()
 -- 	end

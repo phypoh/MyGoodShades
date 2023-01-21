@@ -158,9 +158,16 @@ do
 
 	-- Flashbangs the player for 5 secionds
 	function pack.Actions.Flashbang()
+		-- FadeOut({Color = Color.White, Duration = 0})
+		-- FadeIn({Duration = 5})
 		FadeOut({Color = Color.White, Duration = 0})
-		FadeIn({Duration = 5})
+		thread( pack.Actions.FlashbangFadeout )
 		return true
+	end
+	  
+	function pack.Actions.FlashbangFadeout()
+		wait(2)
+		FadeIn({Duration = 3})
 	end
 
 	function pack.Actions.WaveClearShout()
