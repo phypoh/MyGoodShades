@@ -223,12 +223,12 @@ end
 ModUtil.Path.Set( "MyGoodShades", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
 -- For testing purposes
-ModUtil.Path.Wrap( "BeginOpeningCodex", 
-	function(baseFunc)		
-		if not CanOpenCodex() then
-			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
-			pack.Actions.DDAdd()
-		end
-		baseFunc()
-	end
-)
+-- ModUtil.Path.Wrap( "BeginOpeningCodex", 
+-- 	function(baseFunc)		
+-- 		if not CanOpenCodex() then
+-- 			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
+-- 			pack.Actions.DDAdd()
+-- 		end
+-- 		baseFunc()
+-- 	end
+-- )
