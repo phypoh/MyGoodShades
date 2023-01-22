@@ -182,7 +182,7 @@ do
 		UpdateLifePips()
 
 		PlayerLastStandPresentationEnd()
-		
+
 		PlaySound({ Name = "/VO/ZagreusEmotes/EmotePoweringUp", Id = CurrentRun.Hero.ObjectId })
 		SetAnimation({ Name = "ZagreusWrath", DestinationId = CurrentRun.Hero.ObjectId })
 		CreateAnimation({ Name = "ZagreusWrathFire", DestinationId = CurrentRun.Hero.ObjectId, Color = Color.White })
@@ -195,9 +195,45 @@ do
 
 	-- Flashbangs the player for 5 secionds
 	function pack.Actions.Flashbang()
-		-- FadeOut({Color = Color.White, Duration = 0})
-		-- FadeIn({Duration = 5})
+		local SurprisedVoiceLines = {
+			{
+				-- PlayOnceFromTableThisRun = true,
+				RequiredFalseFlags = { "InFlashback" },
+				PreLineWait = 1.0,
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				-- SuccessiveChanceToPlay = 0.33,
+
+				-- Damn it...
+				{ Cue = "/VO/ZagreusHome_2120"}, 
+
+				-- Ungh...
+				{ Cue = "/VO/ZagreusHome_2121"},
+
+				-- Oh come on
+				{ Cue = "/VO/ZagreusHome_2122"},
+
+				-- What in the blazes
+				{ Cue = "/VO/ZagreusHome_0677"},
+
+				-- Ow.
+				{ Cue = "/VO/ZagreusHome_0061"}, 
+							
+				-- Eughh.
+				{ Cue = "/VO/ZagreusHome_0062"}, 
+							
+				-- Auggh.
+				{ Cue = "/VO/ZagreusHome_0062"},
+
+				-- -- Piss off..
+				-- { Cue = "/VO/ZagreusHome_0098"},
+			},
+		}
+
+		PlaySound({ Name = "/SFX/Explosion1", Id = CurrentRun.Hero.ObjectId })
+		thread( PlayVoiceLines, SurprisedVoiceLines, false)
 		FadeOut({Color = Color.White, Duration = 0})
+	
 		thread( pack.Actions.FlashbangFadeout )
 		return true
 	end
@@ -234,7 +270,7 @@ ModUtil.Path.Wrap( "BeginOpeningCodex",
 	function(baseFunc)		
 		if not CanOpenCodex() then
 			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
-			pack.Actions.DDRemove()
+			pack.Actions.Flashbang()
 		end
 		baseFunc()
 	end
