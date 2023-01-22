@@ -58,11 +58,11 @@ do
 	-- Hope you enjoyed the show, my good Shade!
 	function pack.Actions.KillHero( id )
 
-		local HelloVoiceLines = {
+		local DeadVoiceLines = {
 			{
 				-- PlayOnceFromTableThisRun = true,
 				RequiredFalseFlags = { "InFlashback" },
-				PreLineWait = 1.0,
+				PreLineWait = 1.00,
 				BreakIfPlayed = true,
 				RandomRemaining = true,
 
@@ -77,7 +77,7 @@ do
 			},
 		}
 	
-		local playedSomething = PlayVoiceLines(HelloVoiceLines, false)
+		local playedSomething = PlayVoiceLines(DeadVoiceLines, false)
 		return true, KillHero( { }, { }, { } )
 	end
 
@@ -88,7 +88,7 @@ do
 			{
 				-- PlayOnceFromTableThisRun = true,
 				RequiredFalseFlags = { "InFlashback" },
-				PreLineWait = 1.0,
+				PreLineWait = 0.5,
 				BreakIfPlayed = true,
 				RandomRemaining = true,
 				-- SuccessiveChanceToPlay = 0.33,
@@ -199,31 +199,25 @@ do
 			{
 				-- PlayOnceFromTableThisRun = true,
 				RequiredFalseFlags = { "InFlashback" },
-				PreLineWait = 1.0,
+				PreLineWait = 0.25,
 				BreakIfPlayed = true,
 				RandomRemaining = true,
 				-- SuccessiveChanceToPlay = 0.33,
 
-				-- Damn it...
-				{ Cue = "/VO/ZagreusHome_2120"}, 
-
-				-- Ungh...
-				{ Cue = "/VO/ZagreusHome_2121"},
-
-				-- Oh come on
-				{ Cue = "/VO/ZagreusHome_2122"},
-
-				-- What in the blazes
-				{ Cue = "/VO/ZagreusHome_0677"},
-
-				-- Ow.
-				{ Cue = "/VO/ZagreusHome_0061"}, 
-							
-				-- Eughh.
-				{ Cue = "/VO/ZagreusHome_0062"}, 
-							
-				-- Auggh.
-				{ Cue = "/VO/ZagreusHome_0062"},
+				-- Aahh!
+				{ Cue = "/VO/ZagreusField_0068" },
+				-- Wha--?
+				{ Cue = "/VO/ZagreusField_0069" },
+				-- Wha?!
+				{ Cue = "/VO/ZagreusField_0070" },
+				-- Aarrgh!
+				{ Cue = "/VO/ZagreusField_0073" },
+				-- Ah, damn it!
+				{ Cue = "/VO/ZagreusField_0075" },
+				-- Why, you...!
+				{ Cue = "/VO/ZagreusField_0076" },
+				-- Wha, how?
+				{ Cue = "/VO/ZagreusField_0078" },
 
 				-- -- Piss off..
 				-- { Cue = "/VO/ZagreusHome_0098"},
@@ -231,8 +225,9 @@ do
 		}
 
 		PlaySound({ Name = "/SFX/Explosion1", Id = CurrentRun.Hero.ObjectId })
+		-- PlayVoiceLines(SurprisedVoiceLines, false)
 		thread( PlayVoiceLines, SurprisedVoiceLines, false)
-		FadeOut({Color = Color.White, Duration = 0})
+		thread( FadeOut, {Color = Color.White, Duration = 0})
 	
 		thread( pack.Actions.FlashbangFadeout )
 		return true
