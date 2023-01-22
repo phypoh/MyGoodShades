@@ -218,9 +218,6 @@ do
 				{ Cue = "/VO/ZagreusField_0076" },
 				-- Wha, how?
 				{ Cue = "/VO/ZagreusField_0078" },
-
-				-- -- Piss off..
-				-- { Cue = "/VO/ZagreusHome_0098"},
 			},
 		}
 
@@ -261,12 +258,12 @@ end
 ModUtil.Path.Set( "MyGoodShades", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
 -- For testing purposes
-ModUtil.Path.Wrap( "BeginOpeningCodex", 
-	function(baseFunc)		
-		if not CanOpenCodex() then
-			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
-			pack.Actions.Flashbang()
-		end
-		baseFunc()
-	end
-)
+-- ModUtil.Path.Wrap( "BeginOpeningCodex", 
+-- 	function(baseFunc)		
+-- 		if not CanOpenCodex() then
+-- 			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
+-- 			pack.Actions.Flashbang()
+-- 		end
+-- 		baseFunc()
+-- 	end
+-- )
