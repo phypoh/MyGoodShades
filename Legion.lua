@@ -110,6 +110,7 @@ do
 
 	function pack.Parametric.Actions.SpawnBoss(bossName, scaledHealth)
 		return function (...)
+			PlaySound({ Name = "/SFX/FightGong" })
 			local enemyData = EnemyData[bossName]
 			local newEnemy = DeepCopyTable( enemyData )
 			if scaledHealth then
