@@ -82,9 +82,9 @@ namespace CrowdControl.Games.Packs
                 {Price = 700, Description = "A safeword might not cut it here."},
             new Effect("Spawn Tisiphone", "Legion.SpawnTis" )
                 {Price = 700, Description = "Safeword is 'Murder'"},
-            new Effect("Spawn Theseus", "Legion.SpawnTheseus" )
-                {Price = 850, Description = "Spawn Asterius, the hero of Elysium."},
             new Effect("Spawn Asterius", "Legion.SpawnAsterius" )
+                {Price = 850, Description = "Spawn Asterius, the hero of Elysium."},
+            new Effect("Spawn Theseus", "Legion.SpawnTheseus" )
                 {Price = 800, Description = "Spawn Asterius's Sidekick."},
 
         };
