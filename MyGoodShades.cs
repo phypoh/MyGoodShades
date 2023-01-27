@@ -43,8 +43,8 @@ namespace CrowdControl.Games.Packs
                 {Price = 15, Description = "Summon Skelly's decoy to distract enemies."},
             new Effect("Summon Bouldy", "Assists.SisyphusAssist")
                 {Price = 15, Description = "Summon Bouldy to smash enemies and drop a smattering of gifts!."},
-            new Effect("Summon Athena", "Assists.AthenaAssist")
-                {Price = 15, Description = "Summon Athena to give you invulnerability.", Duration = 5},
+            // new Effect("Summon Athena", "Assists.AthenaAssist")
+            //     {Price = 15, Description = "Summon Athena to give you invulnerability.", Duration = 5},
 
             
             // Cornucopia pack

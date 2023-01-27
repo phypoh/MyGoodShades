@@ -85,7 +85,7 @@ do
 	pack.Effects.SisyphusAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.SisyphusAssist))
 	-- pack.Effects.AthenaAssist = cc.RigidEffect( cc.BindEffect( pack.Triggers.IfInCombat,
 	-- 	 cc.TimedEffect( pack.Actions.StartAthenaShout, pack.Actions.FinishAthenaShout ) ) )
-	pack.Effects.AthenaAssist = cc.TimedEffect( pack.Actions.StartAthenaShout, pack.Actions.FinishAthenaShout )
+	-- pack.Effects.AthenaAssist = cc.TimedEffect( pack.Actions.StartAthenaShout, pack.Actions.FinishAthenaShout )
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
