@@ -1,0 +1,15 @@
+{
+  Animations = [
+	"_append"
+        {
+        Name = "DDCrowdControl"
+        FilePath = "MyGoodShades\DDCrowdControl"
+        Type = "ConstantNoUpdate"
+        EndFrame = 1
+        NumFrames = 1
+        StartFrame = 1
+        Scale = 0.6
+        Material = "Unlit"
+        }
+    ]
+}

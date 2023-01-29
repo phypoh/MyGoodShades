@@ -58,6 +58,8 @@ namespace CrowdControl.Games.Packs
                 {Price = 10, Description = "Drop a pomegranate slice that levels up a random boon!"},
             new Effect("Styx Antidote", "Cornucopia.PoisonCure")
                 {Price = 1, Description = "Cures Zagreus from Styx Poison."},
+            new Effect("Drop Boon", "Cornucopia.DropBoon")
+                {Price = 50, Description = "Airdrops a boon from Zagreus's existing God pool."},
 
             // Legion pack
             new Effect("Spawn Numbskulls", "Legion.SpawnNumbskull")

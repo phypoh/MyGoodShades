@@ -11,6 +11,17 @@ do
 	-- Triggers
 	-- =====================================================
 
+	function pack.Triggers.IfOutOfCombat( id, action, ... )
+		if not CurrentRun.Hero.IsDead then
+			local currentEncounter = CurrentRun.CurrentRoom.Encounter
+			if not currentEncounter.InProgress or currentEncounter.EncounterType == "NonCombat" then
+				cc.InvokeEffect( id, action, ... )
+				return true
+			end
+		end
+		return false
+	end
+
 	-- =====================================================
 	-- Actions
 	-- =====================================================
@@ -118,6 +129,19 @@ do
 		return true
 	end 
 
+
+	function pack.Actions.DropBoon()
+		local LootGod = GetInteractedGodThisRun()
+		-- ModUtil.Hades.PrintStack(LootGod) 
+		if LootGod == nil then
+			CreateLoot({ Name = "HermesUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+		else
+			CreateLoot({ Name = LootGod, OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+		end
+		return true
+	end
+
+
 	-- =====================================================
 	-- Effects
 	-- =====================================================
@@ -126,8 +150,7 @@ do
 	pack.Effects.DropNectar = pack.Actions.SpawnNectar
 	pack.Effects.DropPomShard = cc.RigidEffect( cc.BindEffect( packs.Hades.MyGoodShades.Triggers.IfRunActive, pack.Actions.SpawnPomShard ))
 	pack.Effects.PoisonCure = cc.RigidEffect( pack.Actions.PoisonCure )
-
-
+	pack.Effects.DropBoon =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.DropBoon )
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
@@ -137,7 +160,7 @@ ModUtil.Path.Set( "Cornucopia", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 -- ModUtil.Path.Wrap( "BeginOpeningCodex", 
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
--- 			pack.Actions.SpawnPomShard()
+-- 			pack.Actions.DropBoon()
 -- 		end
 -- 		baseFunc()
 -- 	end

@@ -16,6 +16,8 @@ SJSON "Text/en/HelpText.en.sjson"
 :: Animations
 To "Game/Animations/Fx.sjson" 
 SJSON "Animations/Fx.sjson"
+To "Game/Animations/GUIAnimations.sjson"
+SJSON "Animations/GUIAnimations.sjson"
 
 :: Assets
 To "Win/Packages/MyGoodShades.pkg"

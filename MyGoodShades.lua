@@ -141,7 +141,7 @@ do
 			IncreaseMax = atMaxLastStands,
 			Silent = true,
 			WeaponName = 'LastStandMetaUpgradeShield',
-			Icon = "ExtraLifeHeart",
+			Icon = "DDCrowdControl",
 			HealFraction = 0.5
 		})
 		UpdateLifePips()
@@ -262,7 +262,7 @@ ModUtil.Path.Set( "MyGoodShades", ModUtil.Table.Copy( pack.Effects ), cc.Effects
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
 -- 			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
--- 			pack.Actions.Flashbang()
+-- 			pack.Actions.DDAdd()
 -- 		end
 -- 		baseFunc()
 -- 	end
