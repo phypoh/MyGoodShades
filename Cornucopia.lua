@@ -135,7 +135,7 @@ do
 		local output = {}
 		for i, lootName in pairs( LootNames ) do
 			local lootData = LootData[lootName]
-			if lootData.GodLoot then
+			if lootData.GodLoot and IsGameStateEligible( CurrentRun, lootData ) then
 				table.insert(output, lootName)
 			end
 		end
