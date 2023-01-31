@@ -3,7 +3,7 @@
 	"_append"
         {
         Name = "DDCrowdControl"
-        FilePath = "MyGoodShades\DDCrowdControl"
+        FilePath = "MyGoodShades\DDCrowdControl2"
         Type = "ConstantNoUpdate"
         EndFrame = 1
         NumFrames = 1
