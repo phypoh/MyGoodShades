@@ -131,7 +131,17 @@ do
 
 
 	function pack.Actions.DropBoon()
-		local LootGod = GetInteractedGodThisRun()
+		local LootNames = OrderedKeysToList( LootData )
+		local output = {}
+		for i, lootName in pairs( LootNames ) do
+			local lootData = LootData[lootName]
+			if lootData.GodLoot then
+				table.insert(output, lootName)
+			end
+		end
+
+		local LootGod = GetRandomValue(output)
+		
 		-- ModUtil.Hades.PrintStack(LootGod) 
 		if LootGod == nil then
 			CreateLoot({ Name = "HermesUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
