@@ -18,6 +18,8 @@ To "Game/Animations/Fx.sjson"
 SJSON "Animations/Fx.sjson"
 To "Game/Animations/GUIAnimations.sjson"
 SJSON "Animations/GUIAnimations.sjson"
+To "Game/Animations/PortraitAnimations.sjson"
+SJSON "Animations/PortraitAnimations.sjson"
 
 :: Assets
 To "Win/Packages/MyGoodShades.pkg"

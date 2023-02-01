@@ -115,7 +115,10 @@ do
 				{ Cue = "/VO/ZagreusHome_3076"}, 
 
 				-- Seriously, you shades keep it up
-				{ Cue = "/VO/ZagreusHome_3098"}
+				{ Cue = "/VO/ZagreusHome_3098"},
+
+				-- Hello, supportive Shade!
+				{ Cue = "/VO/ZagreusField_3027"},
 							
 			},
 		}
@@ -235,12 +238,6 @@ do
 		FadeIn({Duration = 3})
 	end
 
-	function pack.Actions.WaveClearShout()
-		FireWeaponFromUnit({ Weapon = "WaveClearSuper", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
-			AutoEquip = true, ClearAllFireRequests = true })
-		return true
-	end
-
 	-- =====================================================
 	-- Effects
 	-- =====================================================
@@ -250,7 +247,6 @@ do
 	pack.Effects.DDAdd = cc.RigidEffect( cc.BindEffect( pack.Triggers.IfRunActive, pack.Actions.DDAdd))
 	pack.Effects.DDRemove = cc.RigidEffect( cc.BindEffect( pack.Triggers.CheckLastStand, pack.Actions.DDRemove))
 	pack.Effects.Flashbang = cc.BindEffect( pack.Triggers.IfInCombat, pack.Actions.Flashbang)
-	pack.Effects.ScreenNuke = cc.RigidEffect( cc.BindEffect( pack.Triggers.IfRunActive, pack.Actions.WaveClearShout))
 end
 
 
@@ -262,7 +258,7 @@ ModUtil.Path.Set( "MyGoodShades", ModUtil.Table.Copy( pack.Effects ), cc.Effects
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
 -- 			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
--- 			pack.Actions.DDAdd()
+-- 			pack.Actions.WaveClearShout()
 -- 		end
 -- 		baseFunc()
 -- 	end

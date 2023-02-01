@@ -1,0 +1,15 @@
+{
+  Animations = [
+    "_append"
+    {
+      Name = "Portrait_Shades_Default_01"
+      InheritFrom = "Portrait_Base_01"
+      FilePath = "MyGoodShades\Portraits_Shades_01"
+      EndFrame = 1
+      StartFrame = 1
+      OffsetX = -90.0
+      OffsetY = -90.0
+      Scale = 1.50
+    }
+  ]
+}

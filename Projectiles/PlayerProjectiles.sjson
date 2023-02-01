@@ -6,7 +6,7 @@
       InheritFrom = "1_BasePlayerSmallProjectile"
       DetonateGraphic = "ZagCastNovaHit"
       Type = "STRAIGHT"
-      DetonateSound = "/SFX/WrathStart"
+      //DetonateSound = "/SFX/WrathStart"
       Fuse = 0.0
       CanBeReflected = false
       CanBeProjectileDefenseDestroyed = false

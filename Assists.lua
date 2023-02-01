@@ -73,15 +73,57 @@ do
 		return true
 	end
 
+	function pack.Actions.WaveClearShout()
+		assistData = 	
+		{
+			WeaponName = "WaveClearSuper",
+			GameStateRequirements = {},
+			AssistPresentationPortrait = "Portrait_Shades_Default_01",
+			-- AssistPresentationPortrait = "Portrait_Thanatos_Default_01",
+			AssistPresentationPortraitOffsetY = 45,
+			AssistPresentationColor = { 0, 255, 0, 255 },
+		}	
+
+		local AssistVoiceLines = {
+			{
+				-- PlayOnceFromTableThisRun = true,
+				RequiredFalseFlags = { "InFlashback" },
+				PreLineWait = 0.5,
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				-- SuccessiveChanceToPlay = 0.33,
+
+				-- "We got them, my good Shade!
+				{ Cue = "/VO/ZagreusField_3347"}, 
+
+				-- Thank you for your support, my Shade!
+				{ Cue = "/VO/ZagreusField_3346"},
+				
+				-- Showed them who's boss, didn't we, Shade?
+				{ Cue = "/VO/ZagreusField_3348"},
+			},
+		}
+
+		DoAssistPresentation( assistData )
+
+		PlaySound({ Name = "/SFX/WrathStart", Id = CurrentRun.Hero.ObjectId })
+		FireWeaponFromUnit({ Weapon = "WaveClearSuper", Id = CurrentRun.Hero.ObjectId, DestinationId = CurrentRun.Hero.ObjectId,
+			AutoEquip = true, ClearAllFireRequests = true })
+
+		thread( DoAssistPresentationPostWeapon, assistData )
+		thread( AssistCompletePresentation, assistData )
+		thread( PlayVoiceLines, AssistVoiceLines, false)
+		return true
+	end
+
 	-- =====================================================
 	-- Effects
 	-- =====================================================
 	pack.Effects.DusaAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.DusaAssist))
 	pack.Effects.SkellyAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.SkellyAssist))
 	pack.Effects.SisyphusAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.SisyphusAssist))
-	-- pack.Effects.AthenaAssist = cc.RigidEffect( cc.BindEffect( pack.Triggers.IfInCombat,
-	-- 	 cc.TimedEffect( pack.Actions.StartAthenaShout, pack.Actions.FinishAthenaShout ) ) )
 	pack.Effects.AthenaAssist = pack.Actions.DeflectShout
+	pack.Effects.ScreenNuke = cc.RigidEffect( cc.BindEffect( pack.Triggers.IfRunActive, pack.Actions.WaveClearShout))
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
@@ -91,8 +133,8 @@ ModUtil.Path.Set( "Assists", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 -- ModUtil.Path.Wrap( "BeginOpeningCodex", 
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
--- 			ModUtil.Hades.PrintStack("Testing Codex function")
--- 			pack.Actions.DeflectShout()
+-- 			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
+-- 			pack.Actions.WaveClearShout()
 -- 		end
 -- 		baseFunc()
 -- 	end

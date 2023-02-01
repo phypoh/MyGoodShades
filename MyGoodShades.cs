@@ -33,8 +33,7 @@ namespace CrowdControl.Games.Packs
                 {Price = 75, Description = "Take away one a Death Defiance!"},
             new Effect("Flashbang", "MyGoodShades.Flashbang") 
                 {Price = 20, Description = "Flashbang the player for 5 seconds!"},
-            new Effect("Deus Ex Machina", "MyGoodShades.ScreenNuke")
-                {Price = 20, Description = "Deal a ton of damage to every enemy in the room!"},
+
            
             // Assist pack
             new Effect("Summon Dusa", "Assists.DusaAssist")
@@ -45,6 +44,8 @@ namespace CrowdControl.Games.Packs
                 {Price = 15, Description = "Summon Bouldy to smash enemies and drop a smattering of gifts!."},
             new Effect("Summon Athena", "Assists.AthenaAssist")
                 {Price = 15, Description = "Summon Athena to give you invulnerability.", Duration = 5},
+                        new Effect("Deus Ex Machina", "Assists.ScreenNuke")
+                {Price = 20, Description = "Deal a ton of damage to every enemy in the room!"},
 
             
             // Cornucopia pack

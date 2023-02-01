@@ -10,7 +10,7 @@
       AutoLock = true
       FireFx = "null"
       IgnoreOwnerAttackDisabled = true
-      NumProjectiles = 3
+      NumProjectiles = 2
       ProjectileInterval = 0.5
     }
   ]
