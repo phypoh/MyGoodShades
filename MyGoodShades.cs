@@ -44,7 +44,7 @@ namespace CrowdControl.Games.Packs
                 {Price = 15, Description = "Summon Bouldy to smash enemies and drop a smattering of gifts!."},
             new Effect("Summon Athena", "Assists.AthenaAssist")
                 {Price = 15, Description = "Summon Athena to give you invulnerability.", Duration = 5},
-                        new Effect("Deus Ex Machina", "Assists.ScreenNuke")
+            new Effect("Deus Ex Machina", "Assists.ScreenNuke")
                 {Price = 20, Description = "Deal a ton of damage to every enemy in the room!"},
 
             
@@ -60,7 +60,7 @@ namespace CrowdControl.Games.Packs
             new Effect("Styx Antidote", "Cornucopia.PoisonCure")
                 {Price = 1, Description = "Cures Zagreus from Styx Poison."},
             new Effect("Drop Boon", "Cornucopia.DropBoon")
-                {Price = 50, Description = "Airdrops a boon from Zagreus's existing God pool."},
+                {Price = 50, Description = "Airdrops a random god's boon."},
 
             // Legion pack
             new Effect("Spawn Numbskulls", "Legion.SpawnNumbskull")
