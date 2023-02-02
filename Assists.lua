@@ -123,7 +123,7 @@ do
 	pack.Effects.SkellyAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.SkellyAssist))
 	pack.Effects.SisyphusAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.SisyphusAssist))
 	pack.Effects.AthenaAssist = pack.Actions.DeflectShout
-	pack.Effects.ScreenNuke = cc.RigidEffect( cc.BindEffect( pack.Triggers.IfRunActive, pack.Actions.WaveClearShout))
+	pack.Effects.ScreenNuke = cc.RigidEffect( cc.BindEffect( packs.Hades.MyGoodShades.Triggers.IfRunActive, pack.Actions.WaveClearShout))
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path

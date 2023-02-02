@@ -36,7 +36,8 @@ do
 
 
 	function pack.Triggers.BossCheck(id, action, ... )
-		if CurrentRun.CurrentRoom.Name == "RoomOpening" then
+		local currentEncounter = CurrentRun.CurrentRoom.Encounter
+		if CurrentRun.CurrentRoom.Name == "RoomOpening" or not ( currentEncounter.InProgress and currentEncounter.EncounterType ~= "NonCombat" ) then
 			return false
 		end
 
