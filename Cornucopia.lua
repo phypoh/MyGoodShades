@@ -5,7 +5,7 @@ pack.Effects = { }; pack.Actions = { }; pack.Triggers = { }
 pack.Parametric = { Actions = { }, Triggers = { } }
 
 do
-	local MGSConsumableData = ModUtil.Entangled.ModData(ConsumableData)
+	MGSConsumableData = ModUtil.Entangled.ModData(ConsumableData)
 	MGSConsumableData.StoreRewardRandomStack.UseText = "PomShardUseText"
 	-- =====================================================
 	-- Triggers
