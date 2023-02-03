@@ -30,22 +30,22 @@ namespace CrowdControl.Games.Packs
             new Effect("Give Death Defiance", "MyGoodShades.DDAdd")
                 {Price = 50, Description = "Give Zagreus a Death Defiance!"},
             new Effect("Take Death Defiance", "MyGoodShades.DDRemove")
-                {Price = 75, Description = "Take away one a Death Defiance!"},
+                {Price = 100, Description = "Take away a Death Defiance!"},
             new Effect("Flashbang", "MyGoodShades.Flashbang") 
-                {Price = 20, Description = "Flashbang the player for 5 seconds!"},
+                {Price = 25, Description = "Flashbang the player for 5 seconds!"},
 
            
             // Assist pack
             new Effect("Summon Dusa", "Assists.DusaAssist")
                 {Price = 25, Description = "Summon besssssssst girl to help."},
             new Effect("Summon Skelly", "Assists.SkellyAssist")
-                {Price = 15, Description = "Summon Skelly's decoy to distract enemies."},
+                {Price = 25, Description = "Summon Skelly's decoy to distract enemies."},
             new Effect("Summon Bouldy", "Assists.SisyphusAssist")
-                {Price = 15, Description = "Summon Bouldy to smash enemies and drop a smattering of gifts!."},
+                {Price = 20, Description = "Summon Bouldy to smash enemies and drop a smattering of gifts!."},
             new Effect("Summon Athena", "Assists.AthenaAssist")
-                {Price = 15, Description = "Summon Athena to give you invulnerability.", Duration = 5},
+                {Price = 20, Description = "Summon Athena to give you invulnerability.", Duration = 5},
             new Effect("Deus Ex Machina", "Assists.ScreenNuke")
-                {Price = 20, Description = "Deal a ton of damage to every enemy in the room!"},
+                {Price = 25, Description = "Deal a ton of damage to every enemy in the room!"},
 
             
             // Cornucopia pack
@@ -72,9 +72,9 @@ namespace CrowdControl.Games.Packs
             new Effect("Spawn a Voidstone", "Legion.SpawnVoidstone" )
                 {Price = 30, Description = "Spawn a Voidstone that protects another enemy."},
             new Effect("Spawn a Soul Catcher", "Legion.SpawnButterflyBall")
-                {Price = 40, Description = "Spawn a laser spewing Snakestone!"},
-            new Effect("Spawn a Snakestone", "Legion.SpawnSnakestone" )
                 {Price = 40, Description = "Spawn a soul catcher, also known as that-pink-ball-which-spits-butterflies."},
+            new Effect("Spawn a Snakestone", "Legion.SpawnSnakestone" )
+                {Price = 40, Description = "Spawn a laser spewing Snakestone!"},
             new Effect("Spawn a Satyr", "Legion.SpawnSatyr" )
                 {Price = 50, Description = "Not these guys."},
 

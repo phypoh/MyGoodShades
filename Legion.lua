@@ -56,17 +56,19 @@ do
 
 	function pack.Parametric.Actions.SpawnEnemy(selection)
 		return function (...)
+			local currentEncounter = CurrentRun.CurrentRoom.Encounter
 			local enemyData = EnemyData[selection]
 			local newEnemy = DeepCopyTable( enemyData )
 			newEnemy.AIOptions = enemyData.AIOptions
 			newEnemy.BlocksLootInteraction = false
-			local invaderSpawnPoint = 40000
+			local invaderSpawnPoint = SelectSpawnPoint(CurrentRun.CurrentRoom, newEnemy, currentEncounter)
 			newEnemy.ObjectId = SpawnUnit({
 					Name = enemyData.Name,
 					Group = "Standing",
 					DestinationId = invaderSpawnPoint, 
-					OffsetX = math.random(-500,500), 
-					OffsetY = math.random(-500,500) })
+					OffsetX = math.random(-5,5), 
+					OffsetY = math.random(-5,5) 
+				})
 			SetupEnemyObject( newEnemy, CurrentRun )
 			return true
 		end
@@ -74,18 +76,20 @@ do
 
 	function pack.Parametric.Actions.SpawnEnemies(selection, count)
 		return function (...)
+			local currentEncounter = CurrentRun.CurrentRoom.Encounter
 			local enemyData = EnemyData[selection]
 			for i=1, count do
 				local newEnemy = DeepCopyTable( enemyData )
 				newEnemy.AIOptions = enemyData.AIOptions
 				newEnemy.BlocksLootInteraction = false
-				local invaderSpawnPoint = 40000
+				local invaderSpawnPoint = SelectSpawnPoint(CurrentRun.CurrentRoom, newEnemy, currentEncounter)
 				newEnemy.ObjectId = SpawnUnit({
 						Name = enemyData.Name,
 						Group = "Standing",
 						DestinationId = invaderSpawnPoint, 
-						OffsetX = math.random(-500,500), 
-						OffsetY = math.random(-500,500) })
+						OffsetX = math.random(-5,5), 
+						OffsetY = math.random(-5,5) 
+					})
 				SetupEnemyObject( newEnemy, CurrentRun )
 				end
 			return true
@@ -112,6 +116,7 @@ do
 	function pack.Parametric.Actions.SpawnBoss(bossName, scaledHealth)
 		return function (...)
 			PlaySound({ Name = "/SFX/FightGong" })
+			local currentEncounter = CurrentRun.CurrentRoom.Encounter
 			local enemyData = EnemyData[bossName]
 			local newEnemy = DeepCopyTable( enemyData )
 			if scaledHealth then
@@ -120,11 +125,12 @@ do
 			end
 			newEnemy.AIOptions = enemyData.AIOptions
 			newEnemy.BlocksLootInteraction = false
-			local invaderSpawnPoint = 40000
+			local invaderSpawnPoint = SelectSpawnPoint(CurrentRun.CurrentRoom, newEnemy, currentEncounter)
 			newEnemy.ObjectId = SpawnUnit({ Name = enemyData.Name, Group = "Standing", 
-				DestinationId = CurrentRun.Hero.ObjectId, 
-				OffsetX = math.random(-500,500), 
-				OffsetY = math.random(-500,500) })
+				DestinationId = invaderSpawnPoint, 
+				OffsetX = math.random(-5,5), 
+				OffsetY = math.random(-5,5) 
+			})
 			SetupEnemyObject( newEnemy, CurrentRun, { SkipSpawnVoiceLines = true }  )
 			UseableOff({ Id = newEnemy.ObjectId })
 			return true

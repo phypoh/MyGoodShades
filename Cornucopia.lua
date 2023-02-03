@@ -30,7 +30,7 @@ do
 	function pack.Actions.SpawnMoney()
 		local dropItemName = "MinorMoneyDrop"
 		GiveRandomConsumables({
-			Delay = 0.5,
+			Delay = 0,
 			NotRequiredPickup = true,
 			LootOptions =
 			{
@@ -53,7 +53,7 @@ do
 	function pack.Actions.SpawnNectar()
 		local dropItemName = "GiftDrop"
 		GiveRandomConsumables({
-			Delay = 0.5,
+			Delay = 0,
 			NotRequiredPickup = true,
 			LootOptions =
 			{
@@ -69,7 +69,7 @@ do
 	function pack.Actions.SpawnPomShard()
 		local dropItemName = "StoreRewardRandomStack"
 		GiveRandomConsumables({
-			Delay = 0.5,
+			Delay = 0,
 			NotRequiredPickup = true,
 			LootOptions =
 			{
