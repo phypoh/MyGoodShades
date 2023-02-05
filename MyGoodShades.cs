@@ -26,7 +26,7 @@ namespace CrowdControl.Games.Packs
             new Effect("No Escape", "MyGoodShades.KillHero"){ Duration = 5, Price = 1000, 
                 Description = "Send Zag back to the house of Hades, forcing him to start the run over."},
             new Effect("Boost God Gauge", "MyGoodShades.BuildSuperMeter")
-                {Price = 3, Description = "Fill the God Gague by a little over a bar, only if Zagreus has a call."},
+                {Price = 15, Description = "Max out the God Gage, only if Zagreus has a call."},
             new Effect("Give Death Defiance", "MyGoodShades.DDAdd")
                 {Price = 50, Description = "Give Zagreus a Death Defiance!"},
             new Effect("Take Death Defiance", "MyGoodShades.DDRemove")

@@ -37,7 +37,7 @@ do
 	end
 
 	function pack.Triggers.CheckLastStand( id, action, ... )
-		if not CurrentRun.Hero.IsDead and TableLength(CurrentRun.Hero.LastStands) > 0 then
+		if HasLastStand( CurrentRun.Hero ) then
 			cc.InvokeEffect( id, action, ... )
 			return true
 		end
@@ -155,44 +155,12 @@ do
 
 	-- Removes a Death Defiance (if any) 
 	function pack.Actions.DDRemove()
-
-		local secondChanceFxInTime = 0.08
-
-		-- put up screen vfx
-		ScreenAnchors.LastStandVignette = SpawnObstacle({ Name = "BlankObstacle", DestinationId = CurrentRun.Hero.ObjectId, Group = "FX_Standing_Top" })
-		CreateAnimation({ Name = "LastStandVignette", DestinationId = ScreenAnchors.LastStandVignette })
-		AdjustColorGrading({ Name = "DeathDefianceSubtle", Duration = secondChanceFxInTime, Delay = 0.0, })
-
-		RemoveFromGroup({ Id = CurrentRun.Hero.ObjectId, Names = { "Standing" } })
-		AddToGroup({ Id = CurrentRun.Hero.ObjectId, Name = "Combat_Menu", DrawGroup = true })
-
-		-- camera
-		PanCamera({ Id = CurrentRun.Hero.ObjectId, Duration = 0.01 })
-		FocusCamera({ Fraction = 1.03, Duration = 0.045, ZoomType = "Ease" })
-
-		-- pause the game
-		AddSimSpeedChange( "LastStand", { Fraction = 0.005, LerpTime = 0.0001, Priority = true } )
-
-		-- play voiceover
-		thread( PlayerLastStandSFX )
-		waitScreenTime( 0.3, RoomThreadName )
-
-		thread( CrowdReactionPresentation, { AnimationNames = { "StatusIconGrief", "StatusIconOhBoy", "StatusIconEmbarrassed" }, Sound = "/SFX/TheseusCrowdBoo", ReactionChance = 0.05, Requirements = { RequiredRoom = "C_Boss01" }, Delay = 1, Shake = true, RadialBlur = true } )
+		PlaySound({ Name = "/Leftovers/SFX/PlayerKilled", Id = CurrentRun.Hero.ObjectId })
+		-- InCombatTextArgs({ TargetId = CurrentRun.Hero.ObjectId, Text = "DDLostText", Duration = 0.5 })
 		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "DDLostText", Duration = 1 })
-
-		LostLastStandPresentation()
-		RemoveLastStand()
-		UpdateLifePips()
-
-		PlayerLastStandPresentationEnd()
-
-		PlaySound({ Name = "/VO/ZagreusEmotes/EmotePoweringUp", Id = CurrentRun.Hero.ObjectId })
-		SetAnimation({ Name = "ZagreusWrath", DestinationId = CurrentRun.Hero.ObjectId })
-		CreateAnimation({ Name = "ZagreusWrathFire", DestinationId = CurrentRun.Hero.ObjectId, Color = Color.White })
-		CreateAnimation({ Name = "DeathDefianceShockwave", DestinationId = CurrentRun.Hero.ObjectId })
-		--waitScreenTime( 0.3)
-		--PlaySound({ Name = "/VO/ZagreusEmotes/EmoteRangedALT5", Id = CurrentRun.Hero.ObjectId })
-		thread( PlayerLastStandHealingText, args )
+		thread(CheckLastStand, CurrentRun.Hero, CurrentRun.Hero)
+		-- CheckLastStand( CurrentRun.Hero, CurrentRun.Hero )
+		
 		return true
 	end
 
@@ -258,7 +226,7 @@ ModUtil.Path.Set( "MyGoodShades", ModUtil.Table.Copy( pack.Effects ), cc.Effects
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
 -- 			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
--- 			pack.Actions.WaveClearShout()
+-- 			pack.Actions.DDRemove()
 -- 		end
 -- 		baseFunc()
 -- 	end
