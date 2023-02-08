@@ -10,6 +10,10 @@
 			DisplayName = "{I} Use {!Icons.RandomPomSmall} Power-Up"
 		}
 		{
+			Id = "BlindBoxUseText"
+			DisplayName = "{I} Accept {!Icons.RandomLootSmall}"
+		}
+		{
 			Id = "DDGainedText"
 			DisplayName = "{#CombatTextHighlightFormat}Shade gifted a life!{#PreviousFormat}"
 		}
