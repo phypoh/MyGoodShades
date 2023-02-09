@@ -32,7 +32,7 @@ do
 		local dropItemName = "MinorMoneyDrop"
 		GiveRandomConsumables({
 			Delay = 0,
-			NotRequiredPickup = true,
+			NotRequiredPickup = false,
 			LootOptions =
 			{
 				{
@@ -55,7 +55,7 @@ do
 		local dropItemName = "GiftDrop"
 		GiveRandomConsumables({
 			Delay = 0,
-			NotRequiredPickup = true,
+			NotRequiredPickup = false,
 			LootOptions =
 			{
 				{
@@ -67,11 +67,16 @@ do
 		return true
 	end
 
-	function pack.Actions.SpawnPomShard()
-		local dropItemName = "StoreRewardRandomStack"
+	function pack.Actions.SpawnPom()
+		CreateLoot({ Name = "StackUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+		return true
+	end
+
+	function pack.Actions.SpawnCentaurHeart()
+		local dropItemName = "RoomRewardMaxHealthDrop"
 		GiveRandomConsumables({
 			Delay = 0,
-			NotRequiredPickup = true,
+			NotRequiredPickup = false,
 			LootOptions =
 			{
 				{
@@ -175,6 +180,8 @@ do
 	pack.Effects.DropPomShard = cc.RigidEffect( cc.BindEffect( packs.Hades.MyGoodShades.Triggers.IfRunActive, pack.Actions.SpawnPomShard ))
 	pack.Effects.PoisonCure = cc.RigidEffect( pack.Actions.PoisonCure )
 	pack.Effects.DropBoon =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.DropBoon )
+	pack.Effects.DropCentaurHeart =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.SpawnCentaurHeart )
+	pack.Effects.DropPom =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.SpawnPom )
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
@@ -184,7 +191,7 @@ ModUtil.Path.Set( "Cornucopia", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 -- ModUtil.Path.Wrap( "BeginOpeningCodex", 
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
--- 			pack.Actions.DropBoon()
+-- 			pack.Actions.SpawnPom()
 -- 		end
 -- 		baseFunc()
 -- 	end
