@@ -150,24 +150,6 @@ do
 			}
 		})
 		return true
-		-- local LootNames = OrderedKeysToList( LootData )
-		-- local output = {}
-		-- for i, lootName in pairs( LootNames ) do
-		-- 	local lootData = LootData[lootName]
-		-- 	if lootData.GodLoot and IsGameStateEligible( CurrentRun, lootData ) then
-		-- 		table.insert(output, lootName)
-		-- 	end
-		-- end
-
-		-- local LootGod = GetRandomValue(output)
-		
-		-- -- ModUtil.Hades.PrintStack(LootGod) 
-		-- if LootGod == nil then
-		-- 	CreateLoot({ Name = "HermesUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-		-- else
-		-- 	CreateLoot({ Name = LootGod, OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-		-- end
-		-- return true
 	end
 
 
