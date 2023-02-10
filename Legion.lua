@@ -164,7 +164,8 @@ ModUtil.Path.Set( "Legion", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 -- ModUtil.Path.Wrap( "BeginOpeningCodex", 
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
--- 
+-- 			local myfunc = pack.Parametric.Actions.SpawnBoss( "Harpy", 4400 )
+-- 			myfunc()
 -- 		end
 -- 		baseFunc()
 -- 	end

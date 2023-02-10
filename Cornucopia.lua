@@ -7,6 +7,7 @@ pack.Parametric = { Actions = { }, Triggers = { } }
 do
 	MGSConsumableData = ModUtil.Entangled.ModData(ConsumableData)
 	MGSConsumableData.StoreRewardRandomStack.UseText = "PomShardUseText"
+	MGSConsumableData.BlindBoxLoot.UseText = "BlindBoxUseText"
 	-- =====================================================
 	-- Triggers
 	-- =====================================================
@@ -31,7 +32,7 @@ do
 		local dropItemName = "MinorMoneyDrop"
 		GiveRandomConsumables({
 			Delay = 0,
-			NotRequiredPickup = true,
+			NotRequiredPickup = false,
 			LootOptions =
 			{
 				{
@@ -54,7 +55,7 @@ do
 		local dropItemName = "GiftDrop"
 		GiveRandomConsumables({
 			Delay = 0,
-			NotRequiredPickup = true,
+			NotRequiredPickup = false,
 			LootOptions =
 			{
 				{
@@ -106,7 +107,6 @@ do
 		return true
 	end
 
-
 	-- Cures Poison
 	-- Note for developer: code adapted from PoisonCureFountainStyx in ObstacleData.lua and UseStyxFountain in Interactables.lua
 	function pack.Actions.PoisonCure()
@@ -156,23 +156,18 @@ do
 
 
 	function pack.Actions.DropBoon()
-		local LootNames = OrderedKeysToList( LootData )
-		local output = {}
-		for i, lootName in pairs( LootNames ) do
-			local lootData = LootData[lootName]
-			if lootData.GodLoot and IsGameStateEligible( CurrentRun, lootData ) then
-				table.insert(output, lootName)
-			end
-		end
-
-		local LootGod = GetRandomValue(output)
-		
-		-- ModUtil.Hades.PrintStack(LootGod) 
-		if LootGod == nil then
-			CreateLoot({ Name = "HermesUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-		else
-			CreateLoot({ Name = LootGod, OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
-		end
+		local dropItemName = "BlindBoxLoot"
+		GiveRandomConsumables({
+			Delay = 0,
+			NotRequiredPickup = false,
+			LootOptions =
+			{
+				{
+					Name = dropItemName,
+					Chance = 1,
+				}
+			}
+		})
 		return true
 	end
 
@@ -186,6 +181,8 @@ do
 	pack.Effects.DropPomShard = cc.RigidEffect( cc.BindEffect( packs.Hades.MyGoodShades.Triggers.IfRunActive, pack.Actions.SpawnPomShard ))
 	pack.Effects.PoisonCure = cc.RigidEffect( pack.Actions.PoisonCure )
 	pack.Effects.DropBoon =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.DropBoon )
+	pack.Effects.DropCentaurHeart =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.SpawnCentaurHeart )
+	pack.Effects.DropPom =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.SpawnPom )
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
@@ -195,7 +192,7 @@ ModUtil.Path.Set( "Cornucopia", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 -- ModUtil.Path.Wrap( "BeginOpeningCodex", 
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
--- 			pack.Actions.DropBoon()
+-- 			pack.Actions.SpawnPom()
 -- 		end
 -- 		baseFunc()
 -- 	end
