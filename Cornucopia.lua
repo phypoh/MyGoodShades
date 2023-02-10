@@ -66,11 +66,12 @@ do
 		return true
 	end
 
+	-- Spawns a pom shard
 	function pack.Actions.SpawnPomShard()
 		local dropItemName = "StoreRewardRandomStack"
 		GiveRandomConsumables({
 			Delay = 0,
-			NotRequiredPickup = true,
+			NotRequiredPickup = false,
 			LootOptions =
 			{
 				{
@@ -81,6 +82,30 @@ do
 		})
 		return true
 	end
+
+	-- Spawns a Pom
+	function pack.Actions.SpawnPom()
+		CreateLoot({ Name = "StackUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+		return true
+	end
+
+	-- Spawns  Centaur Heart
+	function pack.Actions.SpawnCentaurHeart()
+		local dropItemName = "RoomRewardMaxHealthDrop"
+		GiveRandomConsumables({
+			Delay = 0,
+			NotRequiredPickup = false,
+			LootOptions =
+			{
+				{
+					Name = dropItemName,
+					Chance = 1,
+				}
+			}
+		})
+		return true
+	end
+
 
 	-- Cures Poison
 	-- Note for developer: code adapted from PoisonCureFountainStyx in ObstacleData.lua and UseStyxFountain in Interactables.lua
