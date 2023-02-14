@@ -29,6 +29,7 @@ do
 
 	-- Spawn some moolah
 	function pack.Actions.SpawnMoney()
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CornucopiaText", Duration = 1 })
 		local dropItemName = "MinorMoneyDrop"
 		GiveRandomConsumables({
 			Delay = 0,
@@ -46,12 +47,14 @@ do
 
 	-- Spawns a small heal drop (heals for 10)
 	function pack.Actions.SpawnHealDrop()
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CornucopiaText", Duration = 1 })
 		DropHealth( "HealDropMinor", CurrentRun.Hero.ObjectId )
 		return true
 	end
 
 	-- Gift some nectar
 	function pack.Actions.SpawnNectar()
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CornucopiaText", Duration = 1 })
 		local dropItemName = "GiftDrop"
 		GiveRandomConsumables({
 			Delay = 0,
@@ -69,6 +72,7 @@ do
 
 	-- Spawns a pom shard
 	function pack.Actions.SpawnPomShard()
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CornucopiaText", Duration = 1 })
 		local dropItemName = "StoreRewardRandomStack"
 		GiveRandomConsumables({
 			Delay = 0,
@@ -86,12 +90,14 @@ do
 
 	-- Spawns a Pom
 	function pack.Actions.SpawnPom()
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CornucopiaText", Duration = 1 })
 		CreateLoot({ Name = "StackUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
 		return true
 	end
 
 	-- Spawns  Centaur Heart
 	function pack.Actions.SpawnCentaurHeart()
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CornucopiaText", Duration = 1 })
 		local dropItemName = "RoomRewardMaxHealthDrop"
 		GiveRandomConsumables({
 			Delay = 0,
@@ -156,6 +162,7 @@ do
 
 
 	function pack.Actions.DropBoon()
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CornucopiaText", Duration = 1 })
 		local dropItemName = "BlindBoxLoot"
 		GiveRandomConsumables({
 			Delay = 0,

@@ -14,8 +14,20 @@
 			DisplayName = "{I} Accept {!Icons.RandomLootSmall}"
 		}
 		{
+			Id = "BuildSuperMeterText"
+			DisplayName = "{#CombatTextHighlightFormat}A Shade has filled your gauge!{#PreviousFormat}"
+		}
+		{
+			Id = "CornucopiaText"
+			DisplayName = "{#CombatTextHighlightFormat}A Shade has sent a gift!{#PreviousFormat}"
+		}
+		{
+			Id = "AssistText"
+			DisplayName = "{#CombatTextHighlightFormat}A Shade has sent help!{#PreviousFormat}"
+		}
+		{
 			Id = "DDGainedText"
-			DisplayName = "{#CombatTextHighlightFormat}Shade gifted a life!{#PreviousFormat}"
+			DisplayName = "{#CombatTextHighlightFormat}Blessed by a Shade!{#PreviousFormat}"
 		}
 		{
 			Id = "DDLostText"

@@ -132,6 +132,7 @@ do
 	function pack.Actions.BuildSuperMeter()
 		if IsSuperValid() then 
 			BuildSuperMeter(CurrentRun, CurrentRun.Hero.SuperMeterLimit)
+			PlaySound({ Name = "/Leftovers/SFX/StaminaRefilled", Id = CurrentRun.Hero.ObjectId })
 			return true
 		end
 		return false
@@ -160,7 +161,6 @@ do
 		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "DDLostText", Duration = 1 })
 		thread(CheckLastStand, CurrentRun.Hero, CurrentRun.Hero)
 		-- CheckLastStand( CurrentRun.Hero, CurrentRun.Hero )
-		
 		return true
 	end
 
@@ -226,7 +226,7 @@ ModUtil.Path.Set( "MyGoodShades", ModUtil.Table.Copy( pack.Effects ), cc.Effects
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
 -- 			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
--- 			pack.Actions.DDRemove()
+-- 			pack.Actions.BuildSuperMeter()
 -- 		end
 -- 		baseFunc()
 -- 	end

@@ -24,16 +24,19 @@ do
 
 	-- Summon Dusa for 30 seconds (Companion Fidi)
 	function pack.Actions.DusaAssist()
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "AssistText", Duration = 1 })
 		DusaAssist({Duration = 30})
 		return true
 	end
 
 	function pack.Actions.SkellyAssist()
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "AssistText", Duration = 1 })
 		SkellyAssist()
 		return true
 	end
 
 	function pack.Actions.SisyphusAssist()
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "AssistText", Duration = 1 })
 		SisyphusLootSprinkle( {
 			FunctionName = "SisyphusLootSprinkle",
 			SisyphusWeapon = "NPC_Sisyphus_01_Assist",
