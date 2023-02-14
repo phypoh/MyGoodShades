@@ -99,6 +99,7 @@ do
 
 	function pack.Parametric.Actions.SpawnEnemies(selection, count, scaledHealth)
 		return function (...)
+			PlaySound({ Name = "/SFX/FightGong" })
 			local enemyData = EnemyData[selection]
 			for i=1, count do
 				SpawnEnemy(enemyData, scaledHealth)
@@ -110,6 +111,7 @@ do
 	function pack.Parametric.Actions.SpawnBoss(bossName, scaledHealth)
 		return function (...)
 			PlaySound({ Name = "/SFX/FightGong" })
+			thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "BossSpawnText", Duration = 1 })
 			local currentEncounter = CurrentRun.CurrentRoom.Encounter
 			local enemyData = EnemyData[bossName]
 			local newEnemy = DeepCopyTable( enemyData )

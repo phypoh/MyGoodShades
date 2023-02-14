@@ -33,5 +33,9 @@
 			Id = "DDLostText"
 			DisplayName = "{#CombatTextHighlightFormat}Haunted by a Shade!{#PreviousFormat}"
 		}
+		{
+			Id = "BossSpawnText"
+			DisplayName = "{#CombatTextHighlightFormat}An omninous wind blows...{#PreviousFormat}"
+		}
     ]
 }
