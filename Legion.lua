@@ -108,6 +108,17 @@ do
 		end
 	end
 
+	-- function RefreshBossHealthUI()
+	-- 	DestroyHealthUI()
+
+	-- 	for enemyid, enemy in pairs( ActiveEnemies ) do
+	-- 		-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
+	-- 		if enemy.IsBoss then
+	-- 			thread( CreateBossHealthBar, enemy )
+	-- 		end
+	-- 	end
+	-- end
+
 	function pack.Parametric.Actions.SpawnBoss(bossName, scaledHealth)
 		return function (...)
 			PlaySound({ Name = "/SFX/FightGong" })
@@ -129,6 +140,9 @@ do
 			})
 			SetupEnemyObject( newEnemy, CurrentRun, { SkipSpawnVoiceLines = true }  )
 			UseableOff({ Id = newEnemy.ObjectId })
+
+			thread( CreateBossHealthBar, newEnemy )
+			
 			return true
 		end
 	end
@@ -158,12 +172,12 @@ ModUtil.Path.Set( "Legion", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
 
 -- For testing purposes
--- ModUtil.Path.Wrap( "BeginOpeningCodex", 
--- 	function(baseFunc)		
--- 		if not CanOpenCodex() then
--- 			local myfunc = pack.Parametric.Actions.SpawnEnemies("SwarmerHelmeted", 5, 30)
--- 			myfunc()
--- 		end
--- 		baseFunc()
--- 	end
--- )
+ModUtil.Path.Wrap( "BeginOpeningCodex", 
+	function(baseFunc)		
+		if not CanOpenCodex() then
+			local myfunc = pack.Parametric.Actions.SpawnBoss( "Harpy", 4400 )
+			myfunc()
+		end
+		baseFunc()
+	end
+)
