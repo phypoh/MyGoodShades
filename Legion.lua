@@ -37,6 +37,7 @@ do
 
 	function pack.Triggers.BossCheck(id, action, ... )
 		local currentEncounter = CurrentRun.CurrentRoom.Encounter
+		local numBoss = 0
 		if CurrentRun.CurrentRoom.Name == "RoomOpening" or not ( currentEncounter.InProgress and currentEncounter.EncounterType ~= "NonCombat" ) then
 			return false
 		end
@@ -44,9 +45,14 @@ do
 		for enemyid, enemy in pairs( ActiveEnemies ) do
 			-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
 			if enemy.IsBoss then
-				return false
+				numBoss = numBoss + 1
 			end
 		end
+
+		if numBoss >= 2 then
+			return false
+		end
+
 		cc.InvokeEffect(id, action, ...)
 		return true
 	end
@@ -108,16 +114,30 @@ do
 		end
 	end
 
-	-- function RefreshBossHealthUI()
-	-- 	DestroyHealthUI()
+	-- local Print = ModUtil.Hades.PrintStack
 
-	-- 	for enemyid, enemy in pairs( ActiveEnemies ) do
-	-- 		-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
-	-- 		if enemy.IsBoss then
-	-- 			thread( CreateBossHealthBar, enemy )
-	-- 		end
-	-- 	end
+	-- local function CreateCCBossHealthBar( boss)
+	-- 	boss.HasHealthBar = false
+	-- 	-- local fakeboss = setmetatable( { }, { __index = function( _, k ) local v = boss[ k ]; if k == "HasHealthBar" then Print( k .. ": ".. tostring(v) ) end; return v end, __newindex = function( _, k, v ) boss[k] = v end } )
+	-- 	return CreateBossHealthBar( fakeboss )
 	-- end
+
+	function RefreshBossHealthUI()
+		for enemyid, enemy in pairs( ActiveEnemies ) do
+			-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
+			if enemy.IsBoss then
+				RemoveEnemyUI( enemy )
+			end
+		end
+		for enemyid, enemy in pairs( ActiveEnemies ) do
+			-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
+			if enemy.IsBoss then
+				enemy.HasHealthBar = false
+				CreateBossHealthBar( enemy )
+				-- CreateCCBossHealthBar( enemy )
+			end
+		end
+	end
 
 	function pack.Parametric.Actions.SpawnBoss(bossName, scaledHealth)
 		return function (...)
@@ -141,8 +161,8 @@ do
 			SetupEnemyObject( newEnemy, CurrentRun, { SkipSpawnVoiceLines = true }  )
 			UseableOff({ Id = newEnemy.ObjectId })
 
-			thread( CreateBossHealthBar, newEnemy )
-			
+			-- thread( CreateBossHealthBar, newEnemy )
+			RefreshBossHealthUI()
 			return true
 		end
 	end
@@ -172,12 +192,14 @@ ModUtil.Path.Set( "Legion", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
 
 -- For testing purposes
-ModUtil.Path.Wrap( "BeginOpeningCodex", 
-	function(baseFunc)		
-		if not CanOpenCodex() then
-			local myfunc = pack.Parametric.Actions.SpawnBoss( "Harpy", 4400 )
-			myfunc()
-		end
-		baseFunc()
-	end
-)
+-- ModUtil.Path.Wrap( "BeginOpeningCodex", 
+-- 	function(baseFunc)		
+-- 		if not CanOpenCodex() then
+-- 			local myfunc = pack.Parametric.Actions.SpawnBoss( "Harpy", 4400 )
+-- 			myfunc()
+-- 			-- local myfunc2 = pack.Parametric.Actions.SpawnBoss( "Harpy2", 4400 )
+-- 			-- myfunc2()
+-- 		end
+-- 		baseFunc()
+-- 	end
+-- )
