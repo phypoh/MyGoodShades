@@ -142,14 +142,6 @@ do
 		end
 	end
 
-	-- local Print = ModUtil.Hades.PrintStack
-
-	-- local function CreateCCBossHealthBar( boss)
-	-- 	boss.HasHealthBar = false
-	-- 	-- local fakeboss = setmetatable( { }, { __index = function( _, k ) local v = boss[ k ]; if k == "HasHealthBar" then Print( k .. ": ".. tostring(v) ) end; return v end, __newindex = function( _, k, v ) boss[k] = v end } )
-	-- 	return CreateBossHealthBar( fakeboss )
-	-- end
-
 	function RefreshBossHealthUI()
 		for enemyid, enemy in pairs( ActiveEnemies ) do
 			-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
