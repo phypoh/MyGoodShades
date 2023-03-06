@@ -34,7 +34,6 @@ do
 		end
 	end
 
-
 	function pack.Triggers.BossCheck(id, action, ... )
 		local currentEncounter = CurrentRun.CurrentRoom.Encounter
 		local numBoss = 0
@@ -55,6 +54,35 @@ do
 
 		cc.InvokeEffect(id, action, ...)
 		return true
+	end
+
+	function pack.Parametric.Triggers.DoubleBossCheck( bossName )
+		return function( ... )
+			local currentEncounter = CurrentRun.CurrentRoom.Encounter
+			local numBoss = 0
+			if CurrentRun.CurrentRoom.Name == "RoomOpening" or not ( currentEncounter.InProgress and currentEncounter.EncounterType ~= "NonCombat" ) then
+				return false
+			end
+
+			for enemyid, enemy in pairs( ActiveEnemies ) do
+				-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
+				if enemy.IsBoss then
+					numBoss = numBoss + 1
+				end
+				if enemy.Name == bossName then
+					-- ModUtil.Hades.PrintStack("Same boss")
+					return false
+				end
+			end
+
+			if numBoss >= 2 then
+				-- ModUtil.Hades.PrintStack("Too many")
+				return false
+			end
+
+			cc.InvokeEffect( ... )
+			return true
+		end
 	end
 	-- =========================================
 	-- Actions
@@ -179,11 +207,17 @@ do
 	pack.Effects.SpawnSnakestone = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Parametric.Actions.SpawnEnemies("HeavyRangedForked", 1, 215))
 	pack.Effects.SpawnSatyr = cc.BindEffect(pack.Triggers.IfNotFirstRoom, pack.Parametric.Actions.SpawnEnemies("SatyrRanged", 1, 375))
 
-	pack.Effects.SpawnMeg = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Harpy", 4400 )))
-	pack.Effects.SpawnAlecto = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Harpy2", 4600 )))
-	pack.Effects.SpawnTis = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Harpy3", 5200 )))
-	pack.Effects.SpawnTheseus = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Theseus", 4500 )))
-	pack.Effects.SpawnAsterius = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Minotaur", 7000 )))
+	-- pack.Effects.SpawnMeg = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Harpy", 4400 )))
+	-- pack.Effects.SpawnAlecto = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Harpy2", 4600 )))
+	-- pack.Effects.SpawnTis = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Harpy3", 5200 )))
+	-- pack.Effects.SpawnTheseus = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Theseus", 4500 )))
+	-- pack.Effects.SpawnAsterius = cc.RigidEffect(cc.BindEffect(pack.Triggers.BossCheck, pack.Parametric.Actions.SpawnBoss( "Minotaur", 7000 )))
+
+	pack.Effects.SpawnMeg = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.DoubleBossCheck("Harpy"), pack.Parametric.Actions.SpawnBoss( "Harpy", 4400 )))
+	pack.Effects.SpawnAlecto = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.DoubleBossCheck("Harpy2"), pack.Parametric.Actions.SpawnBoss( "Harpy2", 4600 )))
+	pack.Effects.SpawnTis = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.DoubleBossCheck("Harpy3"), pack.Parametric.Actions.SpawnBoss( "Harpy3", 5200 )))
+	pack.Effects.SpawnTheseus = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.DoubleBossCheck("Theseus"), pack.Parametric.Actions.SpawnBoss( "Theseus", 4500 )))
+	pack.Effects.SpawnAsterius = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.DoubleBossCheck("Minotaur"), pack.Parametric.Actions.SpawnBoss( "Minotaur", 7000 )))
 
 end
 
