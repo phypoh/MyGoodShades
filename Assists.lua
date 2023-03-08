@@ -256,7 +256,7 @@ do
 	pack.Effects.ScreenNuke = cc.RigidEffect( cc.BindEffect( packs.Hades.MyGoodShades.Triggers.IfRunActive, pack.Actions.WaveClearShout))
 end
 
--- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
+-- put our effects into the centralised Effects table, under the "Hades.Assists" path
 ModUtil.Path.Set( "Assists", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
 -- -- For testing purposes

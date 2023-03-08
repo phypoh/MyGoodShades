@@ -1,6 +1,7 @@
 Load Priority 100
 Import "MyGoodShades.lua"
 Import "Assists.lua"
+Import "Auction.lua"
 Import "Cornucopia.lua"
 Import "Legion.lua"
 

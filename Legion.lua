@@ -84,9 +84,10 @@ do
 			return true
 		end
 	end
-	-- =========================================
+	-- =====================================================
 	-- Actions
 	-- =====================================================
+	
 
 	local function getHealthScalingForBiome()
 		local biomeNumber = GetBiomeDepth(CurrentRun)
@@ -213,7 +214,7 @@ do
 
 end
 
--- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
+-- put our effects into the centralised Effects table, under the "Hades.Legion" path
 ModUtil.Path.Set( "Legion", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
 

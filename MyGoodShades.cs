@@ -94,6 +94,22 @@ namespace CrowdControl.Games.Packs
             new Effect("Spawn Theseus", "Legion.SpawnTheseus" )
                 {Price = 800, Description = "Spawn Asterius's Sidekick."},
 
+
+            // Auction pack 
+            new Effect("Sword Swap", "Auction.SwordSwap" )
+                {Price = 700, Description = "Swap Zagreus's weapon to the sword."},
+            new Effect("Spear Swap", "Auction.SpearSwap" )
+                {Price = 700, Description = "Swap Zagreus's weapon to the spear."},
+            new Effect("Shield Swap", "Auction.ShieldSwap" )
+                {Price = 700, Description = "Swap Zagreus's weapon to the shield."},
+            new Effect("Bow Swap", "Auction.BowSwap" )
+                {Price = 700, Description = "Swap Zagreus's weapon to the bow."},
+            new Effect("Fist Swap", "Auction.FistSwap" )
+                {Price = 700, Description = "Swap Zagreus's weapon to the fists."},
+            new Effect("Gun Swap", "Auction.GunSwap" )
+                {Price = 700, Description = "Swap Zagreus's weapon to the gun."},
+
+
         };
     }
 }
