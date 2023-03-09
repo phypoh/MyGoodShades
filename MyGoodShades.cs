@@ -61,6 +61,8 @@ namespace CrowdControl.Games.Packs
                 {Price = 1, Description = "Cures Zagreus from Styx Poison."},
             new Effect("Drop Boon", "Cornucopia.DropBoon")
                 {Price = 50, Description = "Airdrops a random god's boon."},
+            new Effect("Drop Hammer", "Cornucopia.DropHammer")
+                {Price = 50, Description = "Airdrops a Daedalus Hammer."},
             new Effect("Drop Centaur Heart", "Cornucopia.DropCentaurHeart")
                 {Price = 25, Description = "Drops a Centaur Heart."},
             new Effect("Drop Pom of Power", "Cornucopia.DropPom")

@@ -161,7 +161,7 @@ do
 	end 
 
 
-	function pack.Actions.DropBoon()
+	function pack.Actions.SpawnBoon()
 		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CornucopiaText", Duration = 1 })
 		local dropItemName = "BlindBoxLoot"
 		GiveRandomConsumables({
@@ -178,6 +178,13 @@ do
 		return true
 	end
 
+	function pack.Actions.SpawnHammer()
+		thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "CornucopiaText", Duration = 1 })
+		CreateLoot({ Name = "WeaponUpgrade", OffsetX = 100, SpawnPoint = CurrentRun.Hero.ObjectId })
+		return true
+	end
+
+
 
 	-- =====================================================
 	-- Effects
@@ -187,9 +194,10 @@ do
 	pack.Effects.DropNectar = pack.Actions.SpawnNectar
 	pack.Effects.DropPomShard = cc.RigidEffect( cc.BindEffect( packs.Hades.MyGoodShades.Triggers.IfRunActive, pack.Actions.SpawnPomShard ))
 	pack.Effects.PoisonCure = cc.RigidEffect( pack.Actions.PoisonCure )
-	pack.Effects.DropBoon =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.DropBoon )
+	pack.Effects.DropBoon =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.SpawnBoon )
 	pack.Effects.DropCentaurHeart =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.SpawnCentaurHeart )
 	pack.Effects.DropPom =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.SpawnPom )
+	pack.Effects.DropHammer =  cc.BindEffect( pack.Triggers.IfOutOfCombat, pack.Actions.SpawnHammer )
 end
 
 -- put our effects into the centralised Effects table, under the "Hades.Cornucopia" path
@@ -199,7 +207,7 @@ ModUtil.Path.Set( "Cornucopia", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 -- ModUtil.Path.Wrap( "BeginOpeningCodex", 
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
--- 			pack.Actions.SpawnPom()
+-- 			pack.Actions.SpawnHammer()
 -- 		end
 -- 		baseFunc()
 -- 	end
