@@ -148,16 +148,18 @@ do
 			-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
 			if enemy.IsBoss then
 				RemoveEnemyUI( enemy )
-			end
-		end
-		for enemyid, enemy in pairs( ActiveEnemies ) do
-			-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
-			if enemy.IsBoss then
 				enemy.HasHealthBar = false
 				CreateBossHealthBar( enemy )
-				-- CreateCCBossHealthBar( enemy )
 			end
 		end
+		-- for enemyid, enemy in pairs( ActiveEnemies ) do
+		-- 	-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
+		-- 	if enemy.IsBoss then
+		-- 		enemy.HasHealthBar = false
+		-- 		CreateBossHealthBar( enemy )
+		-- 		-- CreateCCBossHealthBar( enemy )
+		-- 	end
+		-- end
 	end
 
 	function pack.Parametric.Actions.SpawnBoss(bossName, scaledHealth)
@@ -181,6 +183,8 @@ do
 			})
 			SetupEnemyObject( newEnemy, CurrentRun, { SkipSpawnVoiceLines = true }  )
 			UseableOff({ Id = newEnemy.ObjectId })
+			
+			-- wait(0.5)
 
 			-- thread( CreateBossHealthBar, newEnemy )
 			RefreshBossHealthUI()
