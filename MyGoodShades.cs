@@ -36,79 +36,84 @@ namespace CrowdControl.Games.Packs
 
            
             // Assist pack
-            new Effect("Summon Dusa", "Assists.DusaAssist")
+            new Effect("Shades' Aid", "assist", ItemKind.Folder), // new folder for Assist pack
+            new Effect("Summon Dusa", "Assists.DusaAssist", "assist")
                 {Price = 25, Description = "Summon besssssssst girl to help."},
-            new Effect("Summon Skelly", "Assists.SkellyAssist")
+            new Effect("Summon Skelly", "Assists.SkellyAssist", "assist")
                 {Price = 25, Description = "Summon Skelly's decoy to distract enemies."},
-            new Effect("Summon Bouldy", "Assists.SisyphusAssist")
+            new Effect("Summon Bouldy", "Assists.SisyphusAssist", "assist")
                 {Price = 20, Description = "Summon Bouldy to smash enemies and drop a smattering of gifts!."},
             // new Effect("Summon Athena", "Assists.AthenaAssist")
             //     {Price = 20, Description = "Summon Athena to give you invulnerability.", Duration = 5},
-            new Effect("Deus Ex Machina", "Assists.ScreenNuke")
+            new Effect("Deus Ex Machina", "Assists.ScreenNuke", "assist")
                 {Price = 25, Description = "Deal a ton of damage to every enemy in the room!"},
 
             
             // Cornucopia pack
-            new Effect("Drop Healing", "Cornucopia.DropHeal")
+            new Effect("Drop Loot", "cornucopia", ItemKind.Folder), // new folder for Assist pack
+            new Effect("Drop Healing", "Cornucopia.DropHeal", "cornucopia")
                 {Price = 1, Description = "Drop a delicious healing gyro."},
-            new Effect("Drop Obol", "Cornucopia.DropMoney")
+            new Effect("Drop Obol", "Cornucopia.DropMoney", "cornucopia")
                 {Price = 5, Description = "Drop 30 obol! Finder Keepers!"},
-            new Effect("Drop Nectar", "Cornucopia.DropNectar")
+            new Effect("Drop Nectar", "Cornucopia.DropNectar", "cornucopia")
                 {Price = 10, Description = "Drop some yummy nectar."},
-            new Effect("Drop Pom Slice", "Cornucopia.DropPomShard")
+            new Effect("Drop Pom Slice", "Cornucopia.DropPomShard", "cornucopia")
                 {Price = 10, Description = "Drop a pomegranate slice that levels up a random boon!"},
-            new Effect("Styx Antidote", "Cornucopia.PoisonCure")
+            new Effect("Styx Antidote", "Cornucopia.PoisonCure", "cornucopia")
                 {Price = 1, Description = "Cures Zagreus from Styx Poison."},
-            new Effect("Drop Boon", "Cornucopia.DropBoon")
+            new Effect("Drop Boon", "Cornucopia.DropBoon", "cornucopia")
                 {Price = 50, Description = "Airdrops a random god's boon."},
-            new Effect("Drop Hammer", "Cornucopia.DropHammer")
+            new Effect("Drop Hammer", "Cornucopia.DropHammer", "cornucopia")
                 {Price = 50, Description = "Airdrops a Daedalus Hammer."},
-            new Effect("Drop Centaur Heart", "Cornucopia.DropCentaurHeart")
+            new Effect("Drop Centaur Heart", "Cornucopia.DropCentaurHeart", "cornucopia")
                 {Price = 25, Description = "Drops a Centaur Heart."},
-            new Effect("Drop Pom of Power", "Cornucopia.DropPom")
+            new Effect("Drop Pom of Power", "Cornucopia.DropPom", "cornucopia")
                 {Price = 25, Description = "Drops a Pom of Power."},
 
             // Legion pack
-            new Effect("Spawn Numbskulls", "Legion.SpawnNumbskull")
+            new Effect("Spawn Enemies", "legion", ItemKind.Folder), // new folder for Legion pack
+            new Effect("Spawn Numbskulls", "Legion.SpawnNumbskull", "legion")
                 {Price = 20, Description = "Summon some armoured numbskulls for Zag to butt heads with."},
-            new Effect("Spawn Flamewheels", "Legion.SpawnFlameWheel")
+            new Effect("Spawn Flamewheels", "Legion.SpawnFlameWheel", "legion")
                 {Price = 30, Description = "Spawn some mini chariots that explode when they touch Zag! (Same tho)"},
-            new Effect("Spawn Pests", "Legion.SpawnPest" )
+            new Effect("Spawn Pests", "Legion.SpawnPest", "legion")
                 {Price = 20, Description = "Spawn some mine laying pests!"},
-            new Effect("Spawn a Voidstone", "Legion.SpawnVoidstone" )
+            new Effect("Spawn a Voidstone", "Legion.SpawnVoidstone", "legion")
                 {Price = 30, Description = "Spawn a Voidstone that protects another enemy."},
-            new Effect("Spawn a Soul Catcher", "Legion.SpawnButterflyBall")
+            new Effect("Spawn a Soul Catcher", "Legion.SpawnButterflyBall", "legion")
                 {Price = 40, Description = "Spawn a soul catcher, also known as that-pink-ball-which-spits-butterflies."},
-            new Effect("Spawn a Snakestone", "Legion.SpawnSnakestone" )
+            new Effect("Spawn a Snakestone", "Legion.SpawnSnakestone", "legion")
                 {Price = 40, Description = "Spawn a laser spewing Snakestone!"},
-            new Effect("Spawn a Satyr", "Legion.SpawnSatyr" )
+            new Effect("Spawn a Satyr", "Legion.SpawnSatyr", "legion")
                 {Price = 50, Description = "Not these guys."},
 
             // Legion pack (bosses)
-            new Effect("Spawn Meg", "Legion.SpawnMeg" )
+            new Effect("Spawn Bosses", "legionboss", ItemKind.Folder), // new folder for Legion bosses pack
+            new Effect("Spawn Meg", "Legion.SpawnMeg", "legionboss")
                 {Price = 700, Description = "Hope you picked a safeword."},
-            new Effect("Spawn Alecto", "Legion.SpawnAlecto" )
+            new Effect("Spawn Alecto", "Legion.SpawnAlecto", "legionboss")
                 {Price = 700, Description = "A safeword might not cut it here."},
-            new Effect("Spawn Tisiphone", "Legion.SpawnTis" )
+            new Effect("Spawn Tisiphone", "Legion.SpawnTis", "legionboss")
                 {Price = 700, Description = "Safeword is 'Murder'"},
-            new Effect("Spawn Asterius", "Legion.SpawnAsterius" )
+            new Effect("Spawn Asterius", "Legion.SpawnAsterius", "legionboss")
                 {Price = 850, Description = "Spawn Asterius, the hero of Elysium."},
-            new Effect("Spawn Theseus", "Legion.SpawnTheseus" )
+            new Effect("Spawn Theseus", "Legion.SpawnTheseus", "legionboss")
                 {Price = 800, Description = "Spawn Asterius's Sidekick."},
 
 
             // Auction pack 
-            new Effect("Sword Swap", "Auction.SwordSwap" )
+            new Effect("Weapon Swap", "weaponauction", ItemKind.Folder), // new folder for weapon auctions pack
+            new Effect("Sword Swap", "Auction.SwordSwap", "weaponauction")
                 {Price = 700, Description = "Swap Zagreus's weapon to the sword."},
-            new Effect("Spear Swap", "Auction.SpearSwap" )
+            new Effect("Spear Swap", "Auction.SpearSwap", "weaponauction")
                 {Price = 700, Description = "Swap Zagreus's weapon to the spear."},
-            new Effect("Shield Swap", "Auction.ShieldSwap" )
+            new Effect("Shield Swap", "Auction.ShieldSwap", "weaponauction")
                 {Price = 700, Description = "Swap Zagreus's weapon to the shield."},
-            new Effect("Bow Swap", "Auction.BowSwap" )
+            new Effect("Bow Swap", "Auction.BowSwap", "weaponauction")
                 {Price = 700, Description = "Swap Zagreus's weapon to the bow."},
-            new Effect("Fist Swap", "Auction.FistSwap" )
+            new Effect("Fist Swap", "Auction.FistSwap", "weaponauction")
                 {Price = 700, Description = "Swap Zagreus's weapon to the fists."},
-            new Effect("Gun Swap", "Auction.GunSwap" )
+            new Effect("Gun Swap", "Auction.GunSwap", "weaponauction")
                 {Price = 700, Description = "Swap Zagreus's weapon to the gun."},
 
 
