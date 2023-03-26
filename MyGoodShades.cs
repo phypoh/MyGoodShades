@@ -19,6 +19,26 @@ namespace CrowdControl.Games.Packs
 
         public override Game Game { get; } = new(84, "Hades", "Hades", "PC", ConnectorType.SimpleTCPConnector);
 
+
+        // https://discord.com/channels/667753182608359424/1055296343318478919/1063551081570902036
+        // private readonly ConcurrentDictionary<string, long> m_balances = new();
+        // public override IEnumerable<KeyValuePair<string, object?>> CustomFields(Request req)
+        // {
+        //     Effect? effect = Effects.Find(e => e.Kind == ItemKind.BidWarValue && string.Equals(e.Code, req.code));
+        //     if (effect == null) yield break;
+
+        //     m_balances.AddOrUpdate(effect.Code, _ => req.cost ?? 0, (_, _) => req.cost ?? 0);
+
+        //     Effect? parent = Effects.Find(e => e.Kind == ItemKind.BidWar && string.Equals(e.Code, effect.Parent));
+        //     //if (parent == null) yield break;
+
+        //     var siblings = Effects.Where(e => e.Kind == ItemKind.BidWarValue && string.Equals(e.Parent, parent.Code));
+        //     //if (!siblings.Any()) yield break;
+
+        //     var poolData = siblings.Select(s => new KeyValuePair<string, long>(s.Code, m_balances[s.Code]));
+        //     yield return new KeyValuePair<string, object?>("pools", poolData);
+        // }
+
         public override List<Effect> Effects { get; } = new()
         {
             new Effect("Hello World", "MyGoodShades.HelloWorld")
@@ -102,20 +122,34 @@ namespace CrowdControl.Games.Packs
 
 
             // Auction pack 
-            new Effect("Weapon Swap", "weaponauction", ItemKind.Folder), // new folder for weapon auctions pack
-            new Effect("Sword Swap", "Auction.SwordSwap", "weaponauction")
-                {Price = 700, Description = "Swap Zagreus's weapon to the sword."},
-            new Effect("Spear Swap", "Auction.SpearSwap", "weaponauction")
-                {Price = 700, Description = "Swap Zagreus's weapon to the spear."},
-            new Effect("Shield Swap", "Auction.ShieldSwap", "weaponauction")
-                {Price = 700, Description = "Swap Zagreus's weapon to the shield."},
-            new Effect("Bow Swap", "Auction.BowSwap", "weaponauction")
-                {Price = 700, Description = "Swap Zagreus's weapon to the bow."},
-            new Effect("Fist Swap", "Auction.FistSwap", "weaponauction")
-                {Price = 700, Description = "Swap Zagreus's weapon to the fists."},
-            new Effect("Gun Swap", "Auction.GunSwap", "weaponauction")
-                {Price = 700, Description = "Swap Zagreus's weapon to the gun."},
+            // new Effect("Weapon Swap", "weaponauction", ItemKind.Folder), // new folder for weapon auctions pack
+            // new Effect("Sword Swap", "Auction.SwordSwap", "weaponauction")
+            //     {Price = 700, Description = "Swap Zagreus's weapon to the sword."},
+            // new Effect("Spear Swap", "Auction.SpearSwap", "weaponauction")
+            //     {Price = 700, Description = "Swap Zagreus's weapon to the spear."},
+            // new Effect("Shield Swap", "Auction.ShieldSwap", "weaponauction")
+            //     {Price = 700, Description = "Swap Zagreus's weapon to the shield."},
+            // new Effect("Bow Swap", "Auction.BowSwap", "weaponauction")
+            //     {Price = 700, Description = "Swap Zagreus's weapon to the bow."},
+            // new Effect("Fist Swap", "Auction.FistSwap", "weaponauction")
+            //     {Price = 700, Description = "Swap Zagreus's weapon to the fists."},
+            // new Effect("Gun Swap", "Auction.GunSwap", "weaponauction")
+            //     {Price = 700, Description = "Swap Zagreus's weapon to the gun."},
 
+            // // Auction Bidwar
+            new Effect("Weapon Swap", "weaponauction", ItemKind.BidWar),
+            new Effect("Sword Swap", "Auction.SwordSwap", ItemKind.BidWarValue, "weaponauction")
+                {Price = 700, Description = "Swap Zagreus's weapon to the sword."},
+            new Effect("Spear Swap", "Auction.SpearSwap", ItemKind.BidWarValue, "weaponauction")
+                {Price = 700, Description = "Swap Zagreus's weapon to the spear."},
+            new Effect("Shield Swap", "Auction.ShieldSwap", ItemKind.BidWarValue, "weaponauction")
+                {Price = 700, Description = "Swap Zagreus's weapon to the shield."},
+            new Effect("Bow Swap", "Auction.BowSwap", ItemKind.BidWarValue, "weaponauction")
+                {Price = 700, Description = "Swap Zagreus's weapon to the bow."},
+            new Effect("Fist Swap", "Auction.FistSwap", ItemKind.BidWarValue, "weaponauction")
+                {Price = 700, Description = "Swap Zagreus's weapon to the fists."},
+            new Effect("Gun Swap", "Auction.GunSwap", ItemKind.BidWarValue, "weaponauction")
+                {Price = 700, Description = "Swap Zagreus's weapon to the gun."},
 
         };
     }
