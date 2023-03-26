@@ -33,6 +33,7 @@ do
         EquipPlayerWeapon( weaponTrait )
         wait( 0.02 )-- Distribute workload
         EquipWeaponUpgrade( CurrentRun.Hero )
+        thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "WeaponSwapText", Duration = 1 })
     end
     
 
