@@ -18,6 +18,10 @@ do
                 return false
             end 
 
+            if CurrentRun.Hero.IsDead then
+                return false
+            end
+
 			cc.InvokeEffect(...)
 			return true
 		end
