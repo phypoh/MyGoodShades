@@ -19,26 +19,6 @@ namespace CrowdControl.Games.Packs
 
         public override Game Game { get; } = new(84, "Hades", "Hades", "PC", ConnectorType.SimpleTCPConnector);
 
-
-        // https://discord.com/channels/667753182608359424/1055296343318478919/1063551081570902036
-        // private readonly ConcurrentDictionary<string, long> m_balances = new();
-        // public override IEnumerable<KeyValuePair<string, object?>> CustomFields(Request req)
-        // {
-        //     Effect? effect = Effects.Find(e => e.Kind == ItemKind.BidWarValue && string.Equals(e.Code, req.code));
-        //     if (effect == null) yield break;
-
-        //     m_balances.AddOrUpdate(effect.Code, _ => req.cost ?? 0, (_, _) => req.cost ?? 0);
-
-        //     Effect? parent = Effects.Find(e => e.Kind == ItemKind.BidWar && string.Equals(e.Code, effect.Parent));
-        //     //if (parent == null) yield break;
-
-        //     var siblings = Effects.Where(e => e.Kind == ItemKind.BidWarValue && string.Equals(e.Parent, parent.Code));
-        //     //if (!siblings.Any()) yield break;
-
-        //     var poolData = siblings.Select(s => new KeyValuePair<string, long>(s.Code, m_balances[s.Code]));
-        //     yield return new KeyValuePair<string, object?>("pools", poolData);
-        // }
-
         public override List<Effect> Effects { get; } = new()
         {
             new Effect("Hello World", "MyGoodShades.HelloWorld")
@@ -150,8 +130,29 @@ namespace CrowdControl.Games.Packs
                 {Price = 700, Description = "Swap Zagreus's weapon to the fists."},
             new Effect("Gun Swap", "Auction.GunSwap", ItemKind.BidWarValue, "weaponauction")
                 {Price = 700, Description = "Swap Zagreus's weapon to the gun."},
+            // new Effect("Clear Bids", "clearbids", "weaponauction")
+            //     {Price = 10000, Description = "Swap Zagreus's weapon to the gun."},
 
         };
+
+        // protected override void StartEffect(EffectRequest request)
+        // {
+        //     // if (!IsReady(request))
+        //     // {
+        //     //     DelayEffect(request, TimeSpan.FromSeconds(5));
+        //     //     return;
+        //     // }
+
+        //     string[] codeParams = request.FinalCode.Split('_');
+        //     switch (codeParams[0])
+        //     {
+        //         case "clearbids":
+        //         {
+        //             ClearBalance("weaponauction");
+        //             break;
+        //         }
+        //     }
+        // }
     }
 }
 

@@ -148,7 +148,7 @@ do
 			-- ModUtil.Hades.PrintStack("Enemy present: "..enemy.Name)
 			if enemy.IsBoss then
 				RemoveEnemyUI( enemy )
-				enemy.HasHealthBar = false
+				-- enemy.HasHealthBar = false
 				CreateBossHealthBar( enemy )
 			end
 		end
