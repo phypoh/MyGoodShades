@@ -225,8 +225,8 @@ ModUtil.Path.Set( "MyGoodShades", ModUtil.Table.Copy( pack.Effects ), cc.Effects
 -- ModUtil.Path.Wrap( "BeginOpeningCodex", 
 -- 	function(baseFunc)		
 -- 		if not CanOpenCodex() then
--- 			-- ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
--- 			pack.Actions.BuildSuperMeter()
+-- 			ModUtil.Hades.PrintStack("Testing") --..enemy.Name)
+-- 			cc.NotifyCustomEffect(0, "resetPools", "Finished", 208)
 -- 		end
 -- 		baseFunc()
 -- 	end
