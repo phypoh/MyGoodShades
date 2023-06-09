@@ -15,7 +15,17 @@ namespace CrowdControl.Games.Packs
 
         public override SITimeSpan ResponseTimeout => 20;
 
-        public Hades(UserRecord player, Func<CrowdControlBlock, bool> responseHandler, Action<object> statusUpdateHandler) : base(player, responseHandler, statusUpdateHandler) { }
+        public Hades(UserRecord player, Func<CrowdControlBlock, bool> responseHandler, Action<object> statusUpdateHandler) : base(player, responseHandler, statusUpdateHandler) { 
+            RemoteFunctions = new Dictionary<string, FunctionSet.Callback>
+            {
+                { "resetPools", (object?[]? args) =>
+                    {
+                        this.ClearBalance("weaponauction");
+                        return true;
+                    }
+                }
+            };
+        }
 
         public override Game Game { get; } = new(84, "Hades", "Hades", "PC", ConnectorType.SimpleTCPConnector);
 
@@ -26,6 +36,12 @@ namespace CrowdControl.Games.Packs
         //         return true;
         //     } }
         // };
+
+        // do the assignment in the constructor rather than right on the spot
+        // that will move you from a static initializer context to an instance 
+        // context which will let you reference this.ClearBalances
+        // you need to be in an instance context for the implicit this underneath 
+        // that ClearBalances reference which is what that error is complaining about
 
         public override EffectList Effects { get; } = new Effect[]
         {
@@ -121,18 +137,18 @@ namespace CrowdControl.Games.Packs
             //     {Price = 700, Description = "Swap Zagreus's weapon to the gun."},
 
             // // Auction Bidwar
-            new ("Sword Swap", "Auction.SwordSwap", ItemKind.BidWar)
-                {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the sword."},
-            new ("Spear Swap", "Auction.SpearSwap", ItemKind.BidWar)
-                {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the spear."},
-            new ("Shield Swap", "Auction.ShieldSwap", ItemKind.BidWar)
-                {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the shield."},
-            new ("Bow Swap", "Auction.BowSwap", ItemKind.BidWar)
-                {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the bow."},
-            new ("Fist Swap", "Auction.FistSwap", ItemKind.BidWar)
-                {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the fists."},
-            new ("Gun Swap", "Auction.GunSwap", ItemKind.BidWar)
-                {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the gun."},
+            // new ("Sword Swap", "Auction.SwordSwap", ItemKind.BidWar)
+            //     {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the sword."},
+            // new ("Spear Swap", "Auction.SpearSwap", ItemKind.BidWar)
+            //     {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the spear."},
+            // new ("Shield Swap", "Auction.ShieldSwap", ItemKind.BidWar)
+            //     {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the shield."},
+            // new ("Bow Swap", "Auction.BowSwap", ItemKind.BidWar)
+            //     {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the bow."},
+            // new ("Fist Swap", "Auction.FistSwap", ItemKind.BidWar)
+            //     {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the fists."},
+            // new ("Gun Swap", "Auction.GunSwap", ItemKind.BidWar)
+            //     {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the gun."},
             // new ("Clear Bids", "resetPools")
             //     {Price = 10000, Description = "Swap Zagreus's weapon to the gun."},
 
