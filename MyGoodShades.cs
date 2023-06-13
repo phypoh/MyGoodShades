@@ -16,7 +16,18 @@ namespace CrowdControl.Games.Packs
         public override SITimeSpan ResponseTimeout => 20;
 
         public Hades(UserRecord player, Func<CrowdControlBlock, bool> responseHandler, Action<object> statusUpdateHandler)
-         : base(player, responseHandler, statusUpdateHandler) { }
+         : base(player, responseHandler, statusUpdateHandler)
+         {
+            RemoteFunctions = new Dictionary<string, FunctionSet.Callback>
+            {
+                { "ResetPools", (object?[]? args) =>
+                    {
+                        ClearBalance("Auction");
+                        return true;
+                    }
+                }
+            };
+         }
 
         public override Game Game { get; } = new(84, "Hades", "Hades", "PC", ConnectorType.SimpleTCPConnector);
 
