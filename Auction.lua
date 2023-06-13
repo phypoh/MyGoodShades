@@ -66,16 +66,3 @@ pack.Effects.GunSwap = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.Dup
 
 -- put our effects into the centralised Effects table, under the "Hades.Auction" path
 ModUtil.Path.Set( "Auction", cc.KeyedEffect( pack.Effects ), cc.Effects )
-
--- ModUtil.Path.Wrap( "BeginOpeningCodex", 
--- 	function(baseFunc)		
--- 		-- if not CanOpenCodex() then
-        
---             -- WeaponSwap( WeaponData.FistWeapon )
---         myfunc =  pack.Parametric.Actions.WeaponSwap(WeaponData.SwordWeapon)
---         myfunc()
---             -- BowSecondaryFocusedFireTrait
--- 		-- end
--- 		baseFunc()
--- 	end
--- )
