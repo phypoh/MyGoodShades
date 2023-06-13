@@ -64,8 +64,8 @@ pack.Effects.GunSwap = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.Dup
 
 
 
--- put our effects into the centralised Effects table, under the "Hades.Auctions" path
-ModUtil.Path.Set( "Auction", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
+-- put our effects into the centralised Effects table, under the "Hades.Auction" path
+ModUtil.Path.Set( "Auction", cc.KeyedEffect( pack.Effects ), cc.Effects )
 
 -- ModUtil.Path.Wrap( "BeginOpeningCodex", 
 -- 	function(baseFunc)		
