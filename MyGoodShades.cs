@@ -24,6 +24,7 @@ namespace CrowdControl.Games.Packs
                         return true;
                     }
                 }
+                
             };
         }
 
@@ -122,20 +123,18 @@ namespace CrowdControl.Games.Packs
 
 
             // Auction pack 
-            // new ("Weapon Swap", ItemKind.Folder), // new folder for weapon auctions pack
-            // new ("Sword Swap", "Auction.SwordSwap")
-            //     {Price = 700, Description = "Swap Zagreus's weapon to the sword."},
-            // new ("Spear Swap", "Auction.SpearSwap")
-            //     {Price = 700, Description = "Swap Zagreus's weapon to the spear."},
-            // new ("Shield Swap", "Auction.ShieldSwap")
-            //     {Price = 700, Description = "Swap Zagreus's weapon to the shield."},
-            // new ("Bow Swap", "Auction.BowSwap")
-            //     {Price = 700, Description = "Swap Zagreus's weapon to the bow."},
-            // new ("Fist Swap", "Auction.FistSwap")
-            //     {Price = 700, Description = "Swap Zagreus's weapon to the fists."},
-            // new ("Gun Swap", "Auction.GunSwap")
-            //     {Price = 700, Description = "Swap Zagreus's weapon to the gun."},
-
+            new Effect("Weapon Swap", "Auction", ItemKind.BidWar) {
+                Description = "Swaps Zagreus's Weapon",
+                Parameters = new ParameterDef("Weapon Choice", "WeaponParams",
+                    new Parameter("Sword", "SwordSwap"),
+                    new Parameter("Spear", "SpearSwap"),
+                    new Parameter("Shield", "ShieldSwap"),
+                    new Parameter("Bow", "BowSwap"),
+                    new Parameter("Fist", "FistSwap"),
+                    new Parameter("Gun", "GunSwap")
+                )
+            }
+            
             // // Auction Bidwar
             // new ("Sword Swap", "Auction.SwordSwap", ItemKind.BidWar)
             //     {Category = "Weapon Swap", Description = "Swap Zagreus's weapon to the sword."},
