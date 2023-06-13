@@ -37,5 +37,9 @@
 			Id = "BossSpawnText"
 			DisplayName = "{#CombatTextHighlightFormat}An omninous wind blows...{#PreviousFormat}"
 		}
+		{
+			Id = "WeaponSwapText"
+			DisplayName = "{#CombatTextHighlightFormat}Weapon swapped!{#PreviousFormat}"
+		}
     ]
 }
