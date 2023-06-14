@@ -24,7 +24,7 @@ do
             -- ModUtil.Hades.PrintStack("Current Weapon: "..currentWeapon)
             -- ModUtil.Hades.PrintStack("New Weapon: "..weaponTrait)
             if currentWeapon == weaponTrait then
-                return true
+                return false
             end 
 
             if CurrentRun.Hero.IsDead then
@@ -74,5 +74,6 @@ pack.Effects.GunSwap = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.Dup
 
 
 -- put our effects into the centralised Effects table, under the "Hades.Auction" path
-ModUtil.Path.Set( "Auction", cc.KeyedEffect( pack.Effects ), cc.Effects )
+-- ModUtil.Path.Set( "Auction", cc.KeyedEffect( pack.Effects ), cc.Effects )
+ModUtil.Path.Set( "Auction", ModUtil.Table.Copy( pack.Effects ), cc.Effects )
 
