@@ -35,8 +35,8 @@ namespace CrowdControl.Games.Packs
         {
             new Effect("Hello World", "MyGoodShades.HelloWorld")
                 { Price = 1, Description = "Don't be rude, Zagreus. Say hello!"},
-            new Effect("No Escape", "MyGoodShades.KillHero"){ Duration = 5, Price = 1000, 
-                Description = "Send Zag back to the house of Hades, forcing him to start the run over."},
+            new Effect("No Escape", "MyGoodShades.KillHero")
+				{ Price = 1000, Description = "Send Zag back to the house of Hades, forcing him to start the run over."},
             new Effect("Boost God Gauge", "MyGoodShades.BuildSuperMeter")
                 {Price = 15, Description = "Max out the God Gage, only if Zagreus has a call."},
             new Effect("Give Death Defiance", "MyGoodShades.DDAdd")
@@ -53,8 +53,8 @@ namespace CrowdControl.Games.Packs
                 {Price = 25, Description = "Summon Skelly's decoy to distract enemies.", Category = "Shades' Aid"},
             new Effect("Summon Bouldy", "Assists.SisyphusAssist")
                 {Price = 20, Description = "Summon Bouldy to smash enemies and drop a smattering of gifts!.", Category = "Shades' Aid"},
-            // new Effect("Summon Athena", "Assists.AthenaAssist")
-            //     {Price = 20, Description = "Summon Athena to give you invulnerability.", Duration = 5, Category = "Shades' Aid"},
+            //new Effect("Summon Athena", "Assists.AthenaAssist")
+            //    {Price = 20, Description = "Summon Athena to give you invulnerability.", Duration = 5, Category = "Shades' Aid"},
             new Effect("Deus Ex Machina", "Assists.ScreenNuke")
                 {Price = 25, Description = "Deal a ton of damage to every enemy in the room!", Category = "Shades' Aid"},
             
