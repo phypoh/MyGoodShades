@@ -4,6 +4,15 @@ local pack = ModUtil.Mod.Register( "Auction", packs.Hades, false )
 pack.Effects = { }; pack.Actions = { }; pack.Triggers = { }
 pack.Parametric = { Actions = { }, Triggers = { } }
 
+OnAnyLoad
+{ "RoomPreRun",
+    function( triggerArgs )
+        -- ModUtil.Hades.PrintStack("Hello World!")
+        wait( 1.0 )
+        thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "WeaponResetText", Duration = 1 })
+    end
+}
+
 do 
 
     -- =====================================================
@@ -15,10 +24,11 @@ do
             -- ModUtil.Hades.PrintStack("Current Weapon: "..currentWeapon)
             -- ModUtil.Hades.PrintStack("New Weapon: "..weaponTrait)
             if currentWeapon == weaponTrait then
-                return false
+                return true
             end 
 
             if CurrentRun.Hero.IsDead then
+                -- thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "WeaponSwapFailure", Duration = 1 })
                 return false
             end
 
@@ -48,7 +58,6 @@ do
         end
     end
 
-
 end
 
 -- =====================================================
@@ -66,3 +75,4 @@ pack.Effects.GunSwap = cc.RigidEffect(cc.BindEffect(pack.Parametric.Triggers.Dup
 
 -- put our effects into the centralised Effects table, under the "Hades.Auction" path
 ModUtil.Path.Set( "Auction", cc.KeyedEffect( pack.Effects ), cc.Effects )
+
