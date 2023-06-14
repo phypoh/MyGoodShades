@@ -41,5 +41,13 @@
 			Id = "WeaponSwapText"
 			DisplayName = "{#CombatTextHighlightFormat}Weapon swapped!{#PreviousFormat}"
 		}
+		{
+			Id = "WeaponSwapFailure"
+			DisplayName = "{#CombatTextHighlightFormat}Bidwar unavailable out of run!{#PreviousFormat}"
+		}
+		{
+			Id = "WeaponResetText"
+			DisplayName = "{#CombatTextHighlightFormat}Weapon pools reset!{#PreviousFormat}"
+		}
     ]
 }
