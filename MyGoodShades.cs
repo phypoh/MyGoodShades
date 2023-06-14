@@ -107,17 +107,17 @@ namespace CrowdControl.Games.Packs
                 {Price = 800, Description = "Spawn Asterius's Sidekick.", Category = "Spawn Bosses"},
 
             // Auction pack 
-            new Effect("Weapon Swap", "Auction", ItemKind.BidWar) {
-                Description = "Swaps Zagreus's Weapon",
-                Parameters = new ParameterDef("Weapon Choice", "WeaponParams",
-                    new Parameter("Sword", "SwordSwap"),
-                    new Parameter("Spear", "SpearSwap"),
-                    new Parameter("Shield", "ShieldSwap"),
-                    new Parameter("Bow", "BowSwap"),
-                    new Parameter("Fist", "FistSwap"),
-                    new Parameter("Gun", "GunSwap")
-                )
-            }
+            // new Effect("Weapon Swap", "Auction", ItemKind.BidWar) {
+            //     Description = "Swaps Zagreus's Weapon",
+            //     Parameters = new ParameterDef("Weapon Choice", "WeaponParams",
+            //         new Parameter("Sword", "SwordSwap"),
+            //         new Parameter("Spear", "SpearSwap"),
+            //         new Parameter("Shield", "ShieldSwap"),
+            //         new Parameter("Bow", "BowSwap"),
+            //         new Parameter("Fist", "FistSwap"),
+            //         new Parameter("Gun", "GunSwap")
+            //     )
+            // }
         };
     }
 }

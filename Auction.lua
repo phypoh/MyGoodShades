@@ -4,14 +4,14 @@ local pack = ModUtil.Mod.Register( "Auction", packs.Hades, false )
 pack.Effects = { }; pack.Actions = { }; pack.Triggers = { }
 pack.Parametric = { Actions = { }, Triggers = { } }
 
-OnAnyLoad
-{ "RoomPreRun",
-    function( triggerArgs )
-        -- ModUtil.Hades.PrintStack("Hello World!")
-        wait( 1.0 )
-        thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "WeaponResetText", Duration = 1 })
-    end
-}
+-- OnAnyLoad
+-- { "RoomPreRun",
+--     function( triggerArgs )
+--         -- ModUtil.Hades.PrintStack("Hello World!")
+--         wait( 1.0 )
+--         thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "WeaponResetText", Duration = 1 })
+--     end
+-- }
 
 do 
 
