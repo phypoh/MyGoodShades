@@ -8,8 +8,8 @@ OnAnyLoad
 { "RoomPreRun",
     function( triggerArgs )
         -- ModUtil.Hades.PrintStack("Hello World!")
-        wait( 1.0 )
-        thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "WeaponResetText", Duration = 1 })
+        -- wait( 1.0 )
+        -- thread(InCombatTextArgs, { TargetId = CurrentRun.Hero.ObjectId, Text = "WeaponResetText", Duration = 1 })
     end
 }
 
