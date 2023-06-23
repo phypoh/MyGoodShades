@@ -169,6 +169,8 @@ do
 			local currentEncounter = CurrentRun.CurrentRoom.Encounter
 			local enemyData = EnemyData[bossName]
 			local newEnemy = DeepCopyTable( enemyData )
+			newEnemy.IsBoss = false
+			newEnemy.UseBossHealthBar = false
 			if scaledHealth then
 				local newHealth = scaledHealth * getHealthScalingForBiome() 
 				newEnemy.MaxHealth = newHealth
@@ -187,7 +189,7 @@ do
 			-- wait(0.5)
 
 			-- thread( CreateBossHealthBar, newEnemy )
-			RefreshBossHealthUI()
+			-- RefreshBossHealthUI()
 			return true
 		end
 	end

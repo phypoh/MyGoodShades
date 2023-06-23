@@ -252,7 +252,7 @@ do
 	pack.Effects.DusaAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.DusaAssist))
 	pack.Effects.SkellyAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.SkellyAssist))
 	pack.Effects.SisyphusAssist = cc.RigidEffect(cc.BindEffect(pack.Triggers.IfInCombat, pack.Actions.SisyphusAssist))
-	pack.Effects.AthenaAssist = pack.Actions.DeflectShout
+	pack.Effects.AthenaAssist = cc.TimedEffect( AthenaShout, EndAthenaShout )
 	pack.Effects.ScreenNuke = cc.RigidEffect( cc.BindEffect( packs.Hades.MyGoodShades.Triggers.IfRunActive, pack.Actions.WaveClearShout))
 end
 
