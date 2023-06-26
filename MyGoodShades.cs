@@ -82,7 +82,7 @@ namespace CrowdControl.Games.Packs
             new Effect("Spawn Numbskulls", "Legion.SpawnNumbskull")
                 {Price = 20, Description = "Summon some armoured numbskulls for Zag to butt heads with.", Category = "Spawn Enemies"},
             new Effect("Spawn Flamewheels", "Legion.SpawnFlameWheel")
-                {Price = 30, Description = "Spawn some mini chariots that explode when they touch Zag! (Same tho)", Category = "Spawn Enemies"},
+                {Price = 30, Description = "Spawn some mini chariots that explode when they touch Zag!", Category = "Spawn Enemies"},
             new Effect("Spawn Pests", "Legion.SpawnPest")
                 {Price = 20, Description = "Spawn some mine laying pests!", Category = "Spawn Enemies"},
             new Effect("Spawn a Voidstone", "Legion.SpawnVoidstone")
